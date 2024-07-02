@@ -1,0 +1,311 @@
+.div,
+.div * {
+  box-sizing: border-box;
+}
+.div {
+  background: #ffffff;
+  padding: 97px 0px 97px 0px;
+  height: 1024px;
+  position: relative;
+  overflow: hidden;
+}
+.window {
+  position: absolute;
+  inset: 0;
+}
+.area {
+  background: #d9d9d9;
+  border-radius: 31px;
+  width: 53.82%;
+  height: 63.77%;
+  position: absolute;
+  right: 23.12%;
+  left: 23.06%;
+  bottom: 18.07%;
+  top: 18.16%;
+}
+.text-field {
+  width: 21.6%;
+  height: 3.91%;
+  position: absolute;
+  right: 39.24%;
+  left: 39.17%;
+  bottom: 60.94%;
+  top: 35.16%;
+}
+.text-field2 {
+  background: #ffffff;
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  right: 0%;
+  left: 0%;
+  bottom: 0%;
+  top: 0%;
+}
+.text {
+  color: #000000;
+  text-align: right;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 25px;
+  font-weight: 400;
+  position: absolute;
+  left: -157px;
+  top: 10px;
+  width: 105px;
+  height: 26px;
+}
+.text-field3 {
+  width: 21.6%;
+  height: 3.91%;
+  position: absolute;
+  right: 39.24%;
+  left: 39.17%;
+  bottom: 54.59%;
+  top: 41.5%;
+}
+.text-field4 {
+  width: 21.6%;
+  height: 3.91%;
+  position: absolute;
+  right: 39.24%;
+  left: 39.17%;
+  bottom: 48.24%;
+  top: 47.85%;
+}
+.text-field5 {
+  width: 21.6%;
+  height: 3.91%;
+  position: absolute;
+  right: 39.24%;
+  left: 39.17%;
+  bottom: 41.89%;
+  top: 54.2%;
+}
+.tag {
+  width: 407px;
+  height: 32px;
+  position: static;
+}
+.div2 {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 25px;
+  font-weight: 400;
+  position: absolute;
+  left: 443px;
+  top: 625px;
+}
+.tag-toggle-group {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-200, 8px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  left: 564px;
+  top: 625px;
+}
+.tag-toggle {
+  background: var(--background-brand-default, #2c2c2c);
+  border-radius: var(--radius-200, 8px);
+  padding: var(--space-200, 8px);
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-200, 8px);
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+}
+.check {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  overflow: visible;
+}
+.title {
+  color: var(--text-brand-on-brand, #f5f5f5);
+  text-align: left;
+  font-family: var(
+    --single-line-body-base-font-family,
+    "Inter-Regular",
+    sans-serif
+  );
+  font-size: var(--single-line-body-base-font-size, 16px);
+  line-height: var(--single-line-body-base-line-height, 100%);
+  font-weight: var(--single-line-body-base-font-weight, 400);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.tag-toggle2 {
+  background: var(--background-brand-tertiary, #f5f5f5);
+  border-radius: var(--radius-200, 8px);
+  padding: var(--space-200, 8px);
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-200, 8px);
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+}
+.title2 {
+  color: var(--text-brand-tertiary, #757575);
+  text-align: left;
+  font-family: var(
+    --single-line-body-base-font-family,
+    "Inter-Regular",
+    sans-serif
+  );
+  font-size: var(--single-line-body-base-font-size, 16px);
+  line-height: var(--single-line-body-base-line-height, 100%);
+  font-weight: var(--single-line-body-base-font-weight, 400);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.button {
+  width: 131px;
+  height: 45px;
+  position: absolute;
+  left: 654px;
+  top: 716px;
+}
+.area2 {
+  background: #65558f;
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  right: 0%;
+  left: 0%;
+  bottom: 0%;
+  top: 0%;
+}
+.text2 {
+  color: #ffffff;
+  text-align: center;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 25px;
+  font-weight: 400;
+  position: absolute;
+  right: 15.45%;
+  left: 14.32%;
+  width: 70.23%;
+  bottom: 11.52%;
+  top: 21.82%;
+  height: 66.67%;
+}
+.button2 {
+  width: 105px;
+  height: 35px;
+  position: absolute;
+  left: 898px;
+  top: 560px;
+}
+.text3 {
+  color: #ffffff;
+  text-align: center;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  position: absolute;
+  right: 32.33%;
+  left: 32.43%;
+  width: 35.24%;
+  bottom: 9.61%;
+  top: 21.82%;
+  height: 68.57%;
+}
+.button3 {
+  width: 105px;
+  height: 35px;
+  position: absolute;
+  left: 898px;
+  top: 363px;
+}
+.div3 {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 32px;
+  font-weight: 400;
+  position: absolute;
+  left: 650px;
+  top: 259px;
+  width: 122px;
+  height: 40px;
+}
+
+/* 추가 */
+
+/* styles.css */
+body {
+  font-family: Arial, sans-serif;
+}
+
+.tag {
+  padding: 20px;
+}
+
+.div2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.tag-toggle-group {
+  display: flex;
+  gap: 10px;
+}
+
+.tag-toggle, .Pbutton {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  background-color: #e5e5e5; /* 원본 이미지와 유사한 회색 */
+  cursor: pointer;
+  border-radius: 4px;
+  position: relative;
+  color: #000; /* 글자 색상은 검정으로 */
+}
+
+.tag-toggle.selected {
+  background-color: #333;
+  color: white;
+}
+
+.check {
+  margin-right: 10px;
+  display: none;
+  position: absolute;
+  left: 10px;
+}
+
+.tag-toggle.selected .check {
+  display: inline;
+}
+
+.title {
+  font-size: 16px;
+  margin-left: 30px; /* ensure title is not overlapped by the check icon */
+}
+
+#inputBox {
+  display: none; /* Initially hidden */
+  /* Add more styles as needed */
+}
+
+.side-element {
+  border: 1px solid #ccc;
+  padding: 5px;
+  margin-top: 10px;
+  /* Add more styles as needed */
+}
