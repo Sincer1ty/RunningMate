@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="./vars.css">
   <link rel="stylesheet" href="./style.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-  
+  <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
    a,
@@ -41,73 +41,86 @@
   <title>Document</title>
 </head>
 <body>
-  <div class="header">
-    <span class="div2" onclick="Title()">러닝메이트</span>
-    <div class="right-al">
-      <span class="logout" onclick="LogOut()">logout</span>
-      <img onclick="profile()" class="avt" src="generic-avatar0.svg" />
+  <header class="bg-white shadow">
+    <div
+      class="container mx-auto px-4 py-4 flex justify-between items-center"
+    >
+      <!-- Web Title -->
+      <h1 class="text-2xl font-bold text-gray-800">러닝메이트</h1>
+
+      <!-- Right section with Logout button and Profile picture -->
+      <div class="flex items-center space-x-4">
+        <button
+          class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+        >
+          Logout
+        </button>
+        <img
+          src="https://via.placeholder.com/40"
+          alt="Profile Picture"
+          class="relative w-10 h-10 rounded-full cursor-pointer"
+          onclick="toggleProfileDropdown()"
+        />
+      </div>
     </div>
-    
-  </div>
+  </header>
 
 
   <div class="div">
-    <h2 class="div3" style="margin-left: 5%; margin-bottom: 5px;">내가 만든 스터디에요</h2>
-    <!-- 카드 시작 -->
+    <div class="flex container mx-auto">
+      <h1 class="text-5xl p-8">내가 만든 스터디에요!</h1>
+      <div class="flex-grow"></div>
+      <div id="profileDropdown" class="hidden mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg">
+          <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">개인정보 수정</a>
+          <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">만든 스터디</a>
+      </div>
+  </div>
+    
     <div class="background" style="background-color:rgb(254, 247, 255)">
      
       <div class="row row-cols-1 row-cols-md-3 g-4">
-        <div class="col">
-          <div class="card">
-            <div class="card-body" >
-              <h5 class="card-title, boxin" onclick="CardTitle()" style="margin-bottom: 50px;">알고리즘 스터디</h5>
-              <p class="card-tex, boxin" style="margin-bottom: 30px;">알고리즘 스터디 모집합니다.</p>
-              <div class="boxin">
-                <button onclick="Correction()" type="button" class="btn btn-outline-primary" style="margin-right: 50px;">수정</button>
-                <button onclick="Delete()" type="button" class="btn btn-outline-danger">삭제</button>
-              </div>
-            </div>
+        <!-- Card 1 -->
+        <div class="card bg-white shadow-md rounded-lg p-6 h-64" onclick="openModal()">
+          <h2 class="text-xl font-bold mb-2">Card Title 1</h2>
+          <p class="text-gray-700">This is a description of the first card. You can put any content here.</p>
+          <div class="boxin">
+            <button onclick="Correction()" type="button" class="btn btn-outline-primary" style="margin-right: 50px;">수정</button>
+            <button onclick="Delete()" type="button" class="btn btn-outline-danger">삭제</button>
           </div>
         </div>
 
-        <div class="col">
-          <div class="card">
-            <div class="card-body" >
-              <h5 class="card-title, boxin" onclick="CardTitle()" style="margin-bottom: 50px;">알고리즘 스터디</h5>
-              <p class="card-tex, boxin" style="margin-bottom: 30px;">알고리즘 스터디 모집합니다.</p>
-              <div class="boxin">
-                <button onclick="Correction()" type="button" class="btn btn-outline-primary" style="margin-right: 50px;">수정</button>
-                <button onclick="Delete()" type="button" class="btn btn-outline-danger">삭제</button>
-              </div>
-            </div>
+        <!-- Card 1 -->
+        <div class="card bg-white shadow-md rounded-lg p-6 h-64" onclick="openModal()">
+          <h2 class="text-xl font-bold mb-2">Card Title 1</h2>
+          <p class="text-gray-700">This is a description of the first card. You can put any content here.</p>
+          <div class="boxin">
+            <button onclick="Correction()" type="button" class="btn btn-outline-primary" style="margin-right: 50px;">수정</button>
+            <button onclick="Delete()" type="button" class="btn btn-outline-danger">삭제</button>
           </div>
         </div>
 
-        <div class="col">
-          <div class="card">
-            <div class="card-body" >
-              <h5 class="card-title, boxin" onclick="CardTitle()" style="margin-bottom: 50px;">알고리즘 스터디</h5>
-              <p class="card-tex, boxin" style="margin-bottom: 30px;">알고리즘 스터디 모집합니다.</p>
-              <div class="boxin">
-                <button onclick="Correction()" type="button" class="btn btn-outline-primary" style="margin-right: 50px;">수정</button>
-                <button onclick="Delete()" type="button" class="btn btn-outline-danger">삭제</button>
-              </div>
-            </div>
+        <!-- Card 1 -->
+        <div class="card bg-white shadow-md rounded-lg p-6 h-64" onclick="openModal()">
+          <h2 class="text-xl font-bold mb-2">Card Title 1</h2>
+          <p class="text-gray-700">This is a description of the first card. You can put any content here.</p>
+          <div class="boxin">
+            <button onclick="Correction()" type="button" class="btn btn-outline-primary" style="margin-right: 50px;">수정</button>
+            <button onclick="Delete()" type="button" class="btn btn-outline-danger">삭제</button>
           </div>
         </div>
 
-        <div class="col">
-          <div class="card">
-            <div class="card-body" >
-              <h5 class="card-title, boxin" onclick="CardTitle()" style="margin-bottom: 50px;">알고리즘 스터디</h5>
-              <p class="card-tex, boxin" style="margin-bottom: 30px;">알고리즘 스터디 모집합니다.</p>
-              <div class="boxin">
-                <button onclick="Correction()" type="button" class="btn btn-outline-primary" style="margin-right: 50px;">수정</button>
-                <button onclick="Delete()" type="button" class="btn btn-outline-danger">삭제</button>
-              </div>
-            </div>
+        <!-- Card 1 -->
+        <div class="card bg-white shadow-md rounded-lg p-6 h-64" onclick="openModal()">
+          <h2 class="text-xl font-bold mb-2">Card Title 1</h2>
+          <p class="text-gray-700">This is a description of the first card. You can put any content here.</p>
+          <div class="boxin">
+            <button onclick="Correction()" type="button" class="btn btn-outline-primary" style="margin-right: 50px;">수정</button>
+            <button onclick="Delete()" type="button" class="btn btn-outline-danger">삭제</button>
           </div>
         </div>
+      </div>
+
+        
 
 
     </div>

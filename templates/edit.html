@@ -1,173 +1,283 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>러닝메이트</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
     <style>
-        .toggle-button-group {
-            display: flex;
-           
-            border-radius: 9999px;
-            overflow: hidden;
-        }
-        .toggle-button {
-            flex: 1;
-            padding: 0.5rem 1rem;
-            text-align: center;
-            cursor: pointer;
-        }
-        .toggle-button.active {
-            background-color: rgb(192, 192, 192);
-            color: #000000;
-        }
-        .toggle-button.inactive {
-            background-color: white;
-            color: #4a5568;
-        }
-        .local{
-            border-radius: 9999px;
-        }
+      .toggle-button-group {
+        display: flex;
 
-        *{
-  font-family: "Noto Sans KR", sans-serif;
-  font-style: normal;
-}
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-            }
-        .post-group{
-            height: 900px;
-            
-        }
-   
+        border-radius: 9999px;
+        overflow: hidden;
+      }
+      .toggle-button {
+        flex: 1;
+        padding: 0.5rem 1rem;
+        text-align: center;
+        cursor: pointer;
+      }
+      .toggle-button.active {
+        background-color: rgb(192, 192, 192);
+        color: #000000;
+      }
+      .toggle-button.inactive {
+        background-color: white;
+        color: #4a5568;
+      }
+      .local {
+        border-radius: 9999px;
+      }
+
+      * {
+        font-family: "Noto Sans KR", sans-serif;
+        font-style: normal;
+      }
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .post-group {
+        height: 900px;
+      }
     </style>
-</head>
+  </head>
 
-<body class="bg-gray-100">
+  <body class="bg-gray-100">
     <header class="bg-white shadow">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <!-- Web Title -->
-            <h1 class="text-2xl font-bold text-gray-800">러닝메이트</h1>
+      <div
+        class="container mx-auto px-4 py-4 flex justify-between items-center"
+      >
+        <!-- Web Title -->
+        <h1 class="text-2xl font-bold text-gray-800">러닝메이트</h1>
 
-            <!-- Right section with Logout button and Profile picture -->
-            <div class="flex items-center space-x-4">
-                <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
-                    Logout
-                </button>
-                <img src="https://via.placeholder.com/40" alt="Profile Picture" class="w-10 h-10 rounded-full">
-            </div>
+        <!-- Right section with Logout button and Profile picture -->
+        <div class="flex items-center space-x-4">
+          <button
+            class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+          >
+            Logout
+          </button>
+          <img
+            src="https://via.placeholder.com/40"
+            alt="Profile Picture"
+            class="w-10 h-10 rounded-full"
+          />
         </div>
+      </div>
     </header>
-    <h1 class="flex container  mx-auto p-8 text-5xl">스터디 수정</h1>
+    <h1 class="flex container mx-auto p-8 text-5xl">스터디 수정</h1>
     <!-- Main content -->
-    <main class="flex container mx-auto mt-8 px-4 space-x-4 ">
-        <!-- Vertical cards -->
-    <div class="post-group w-full bg-white p-8 rounded-lg ">
-           <!-- Title Input -->
-           <input type="text" placeholder="제목을 입력하세요" class="w-full p-2 mt-6 mb-4 border border-gray-300 rounded-md h-10" value="알고리즘 스터디">
+    <main class="flex container mx-auto mt-8 px-4 space-x-4">
+      <!-- Vertical cards -->
+      <div class="post-group w-full bg-white p-8 rounded-lg">
+        <!-- Title Input -->
+        <input
+          type="text"
+          placeholder="제목을 입력하세요"
+          class="w-full p-2 mt-6 mb-4 border border-gray-300 rounded-md h-10"
+          value="알고리즘 스터디"
+        />
 
-           <!-- Content Textarea -->
-           <textarea style="resize: none;" placeholder="내용을 입력하세요" class="w-full p-2 border border-gray-300 rounded-md h-5/6">장소: 홍대 9번 출구 스터디 룸
+        <!-- Content Textarea -->
+        <textarea
+          style="resize: none"
+          placeholder="내용을 입력하세요"
+          class="w-full p-2 border border-gray-300 rounded-md h-5/6"
+        >
+장소: 홍대 9번 출구 스터디 룸
 
             규칙: 매주 한 명 씩 돌아가며 알고리즘 주제 정해서 발표
-                     3회 이상 무단 결석 시 스터디 장이 스터디 중단 권유 할 수 있음.</textarea>
-    </div>
+                     3회 이상 무단 결석 시 스터디 장이 스터디 중단 권유 할 수 있음.</textarea
+        >
+      </div>
 
-        <!-- Right section with buttons -->
-        <div class="flex-col space-y-4 w-1/4 ml-4">
-            <div class="bg-gray-500 space-y-4 h-full w-auto p-2 flex flex-col space-y-4 rounded-lg">
-                <p>예상 기간</p>
-                <div class="flex">
-                    <input class="mr-2 rounded-md" type="date" value="2024-07-22">~<input class="ml-2 rounded-md" type="date" value="2024-08-22">
-                </div>
-                
-                <p>연락 링크</p>
-                <input type="url" placeholder="링크를 입력하세요" value="https://open.kakao.com/learningMate" class="w-full p-2 mb-2 border border-gray-300 rounded-md h-10">
-                
-                <p>관심사</p>
-                <div class="flex flex-wrap gap-2">
-                    <button type="button" class="keyword-btn bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none"
-                            data-keyword="keyword1">Keyword 1</button>
-                    <button type="button" class="keyword-btn bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none"
-                            data-keyword="keyword2">Keyword 2</button>
-                    <button type="button" class="keyword-btn bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none"
-                            data-keyword="keyword3">Keyword 3</button>
-                    <button type="button" class="keyword-btn bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none active bg-blue-500"
-                            data-keyword="keyword4">Keyword 4</button>
-                    <button type="button" class="keyword-btn bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none"
-                            data-keyword="keyword5">+</button>
-                </div>
-                <p>대면/비대면</p>
-                <div class="flex">
-                    <select id="exampleSelect" class="mt-1 block w-1/3 pl-3  py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
-                        <option>대면</option>
-                        <option>비대면</option>
-                    </select>
-                    <select id="exampleSelect" class="mt-1 block w-2/3 pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
-                        <option>서울</option>
-                        <option>부산</option>
-                        <option>대구</option>
-                        <option>기타</option>
-                    </select>
-                </div>
-               
-                <p>난이도</p>
-                <div class="flex flex-wrap gap-2">
-                    <button type="button" class="keyword-btn bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none"
-                            data-keyword="keyword1">상</button>
-                    <button type="button" class="keyword-btn bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none active bg-blue-500"
-                            data-keyword="keyword2">중상</button>
-                    <button type="button" class="keyword-btn bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none"
-                            data-keyword="keyword3">중</button>
-                    <button type="button" class="keyword-btn bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none"
-                            data-keyword="keyword4">중하</button>
-                    <button type="button" class="keyword-btn bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none"
-                            data-keyword="keyword5">하</button>
-                </div>
-                <p>친목여부(선택사항)</p>
-                <div class="flex flex-wrap gap-2">
-                    <button type="button" class="keyword-btn bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none"
-                            data-keyword="keyword1">있음</button>
-                    <button type="button" class="keyword-btn bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none active bg-blue-500"
-                            data-keyword="keyword2">없음</button>
-                    <button type="button" class="keyword-btn bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none"
-                            data-keyword="keyword3">선택안함</button>
-                </div>
-                <div class="flex-grow"></div>
-                <button class="bg-blue-500 hover:bg-green-700 text-white font-bold py-2 rounded">
-                    저장
-                </button>
-            </div>
+      <!-- Right section with buttons -->
+      <div class="flex-col space-y-4 w-1/4 ml-4">
+        <div
+          class="bg-white space-y-4 h-full w-auto p-2 flex flex-col space-y-4 rounded-lg"
+        >
+          <p>예상 기간</p>
+          <div class="flex">
+            <input
+              class="mr-2 rounded-md"
+              type="date"
+              value="2024-07-22"
+            />~<input class="ml-2 rounded-md" type="date" value="2024-08-22" />
+          </div>
+
+          <p>연락 링크</p>
+          <input
+            type="url"
+            placeholder="링크를 입력하세요"
+            value="https://open.kakao.com/learningMate"
+            class="w-full p-2 mb-2 border border-gray-300 rounded-md h-10"
+          />
+
+          <p>관심사</p>
+          <div class="flex flex-wrap gap-2">
+            <button
+              type="button"
+              class="keyword-btn bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none"
+              data-keyword="keyword1"
+            >
+              Keyword 1
+            </button>
+            <button
+              type="button"
+              class="keyword-btn bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none"
+              data-keyword="keyword2"
+            >
+              Keyword 2
+            </button>
+            <button
+              type="button"
+              class="keyword-btn bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none"
+              data-keyword="keyword3"
+            >
+              Keyword 3
+            </button>
+            <button
+              type="button"
+              class="keyword-btn bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none active bg-blue-500"
+              data-keyword="keyword4"
+            >
+              Keyword 4
+            </button>
+            <button
+              type="button"
+              class="keyword-btn bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none"
+              data-keyword="keyword5"
+            >
+              +
+            </button>
+          </div>
+          <p>대면/비대면</p>
+          <div class="flex">
+            <select
+              id="exampleSelect"
+              class="mt-1 block w-1/3 pl-3 py-2 text-base border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+            >
+              <option>대면</option>
+              <option>비대면</option>
+            </select>
+            <select
+              id="exampleSelect"
+              class="mt-1 block w-2/3 pl-3 pr-10 py-2 text-base border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+            >
+              <option>서울</option>
+              <option>부산</option>
+              <option>대구</option>
+              <option>기타</option>
+            </select>
+          </div>
+
+          <p>난이도</p>
+          <div class="flex flex-wrap gap-2">
+            <button
+              type="button"
+              class="keyword-btn bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none"
+              data-keyword="keyword1"
+            >
+              상
+            </button>
+            <button
+              type="button"
+              class="keyword-btn bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none active bg-blue-500"
+              data-keyword="keyword2"
+            >
+              중상
+            </button>
+            <button
+              type="button"
+              class="keyword-btn bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none"
+              data-keyword="keyword3"
+            >
+              중
+            </button>
+            <button
+              type="button"
+              class="keyword-btn bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none"
+              data-keyword="keyword4"
+            >
+              중하
+            </button>
+            <button
+              type="button"
+              class="keyword-btn bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none"
+              data-keyword="keyword5"
+            >
+              하
+            </button>
+          </div>
+          <p>친목여부(선택사항)</p>
+          <div class="flex flex-wrap gap-2">
+            <button
+              type="button"
+              class="keyword-btn bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none"
+              data-keyword="keyword1"
+            >
+              있음
+            </button>
+            <button
+              type="button"
+              class="keyword-btn bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none active bg-blue-500"
+              data-keyword="keyword2"
+            >
+              없음
+            </button>
+            <button
+              type="button"
+              class="keyword-btn bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none"
+              data-keyword="keyword3"
+            >
+              선택안함
+            </button>
+          </div>
+          <div class="flex-grow"></div>
+          <button
+            class="bg-blue-500 hover:bg-green-700 text-white font-bold py-2 rounded"
+          >
+            저장
+          </button>
         </div>
+      </div>
     </main>
     <script>
-        const buttons = document.querySelectorAll('.keyword-btn');
+      const buttons = document.querySelectorAll(".keyword-btn");
 
-        buttons.forEach(button => {
-            button.addEventListener('click', () => {
-                buttons.forEach(btn => btn.classList.remove('active', 'bg-blue-500', 'text-white')); // Reset all buttons
-                button.classList.add('active', 'bg-blue-500', 'text-white'); // Activate clicked button
-            });
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          buttons.forEach((btn) =>
+            btn.classList.remove("active", "bg-blue-500", "text-white")
+          ); // Reset all buttons
+          button.classList.add("active", "bg-blue-500", "text-white"); // Activate clicked button
         });
+      });
     </script>
     <script>
-        function toggleButton(button) {
-            const buttons = document.querySelectorAll('.toggle-button');
-            buttons.forEach(btn => {
-                btn.classList.remove('active');
-                btn.classList.add('inactive');
-            });
-            button.classList.add('active');
-            button.classList.remove('inactive');
-        }
+      function toggleButton(button) {
+        const buttons = document.querySelectorAll(".toggle-button");
+        buttons.forEach((btn) => {
+          btn.classList.remove("active");
+          btn.classList.add("inactive");
+        });
+        button.classList.add("active");
+        button.classList.remove("inactive");
+      }
     </script>
-</body>
-
+  </body>
 </html>
