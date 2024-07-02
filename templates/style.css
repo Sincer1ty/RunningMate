@@ -1,0 +1,53 @@
+.boxin {
+  /* 수평 중앙 정렬하기 */
+  text-align: center;
+  color: white;
+  margin-top: 60px;
+}
+
+.card-body {
+
+  border-radius: 30px;
+  padding: 10px;
+  background-color: rgb(113, 98, 152);
+}
+
+.background{
+
+  border-radius: 50px;
+  padding: 3%;
+  margin:0 auto;
+  text-align: center;
+  width: 95%;
+  
+
+}
+
+.header{
+  background-color: gainsboro;
+  height: 100px;
+  margin-bottom: 50px;
+  display: flex;
+  align-items: center
+
+}
+
+.avt{
+  margin-left: 30px;
+  float: right;
+  clear: both;
+}
+
+.right-al {
+  width: 95%;
+  display: flex;
+  justify-content: flex-end; /* 요소들을 오른쪽으로 정렬 */
+  align-items: center; /* 요소들을 세로 중앙에 정렬 */
+}
+
+.card {
+
+border-radius: 30px;
+height: 350px;
+
+}
