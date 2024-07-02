@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+    <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+        <h2 class="text-2xl font-bold text-center mb-8">회원가입</h2>
+        <form action="/submit" method="POST">
+            <div class="mb-4">
+                <label for="username" class="block text-gray-700 font-medium mb-2">ID</label>
+                <div class="flex">
+                    <input type="text" id="username" name="username" required
+                           class="flex-grow px-3 py-2 border border-gray-300 rounded-l-lg focus:outline-none focus:border-blue-500">
+                    <button type="button"
+                            class="bg-blue-500 text-white px-4 py-2 rounded-r-lg hover:bg-blue-600 focus:outline-none">
+                        Check
+                    </button>
+                </div>
+            </div>
+            <div class="mb-4">
+                <label for="email" class="block text-gray-700 font-medium mb-2">PW</label>
+                <input type="email" id="email" name="email" required
+                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
+            </div>
+            <div class="mb-4">
+                <label for="password" class="block text-gray-700 font-medium mb-2">PW 확인</label>
+                <input type="password" id="password" name="password" required
+                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
+            </div>
+            <div class="mb-4">
+                <label for="confirm_password" class="block text-gray-700 font-medium mb-2">닉네임</label>
+                <div class="flex">
+                    <input type="text" id="username" name="username" required
+                           class="flex-grow px-3 py-2 border border-gray-300 rounded-l-lg focus:outline-none focus:border-blue-500">
+                    <button type="button"
+                            class="bg-blue-500 text-white px-4 py-2 rounded-r-lg hover:bg-blue-600 focus:outline-none">
+                        Check
+                    </button>
+                </div>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 font-medium mb-2">관심사</label>
+                <div class="flex flex-wrap gap-2">
+                    <button type="button" class="keyword-btn bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none"
+                            data-keyword="keyword1">Keyword 1</button>
+                    <button type="button" class="keyword-btn bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none"
+                            data-keyword="keyword2">Keyword 2</button>
+                    <button type="button" class="keyword-btn bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none"
+                            data-keyword="keyword3">Keyword 3</button>
+                    <button type="button" class="keyword-btn bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none"
+                            data-keyword="keyword4">Keyword 4</button>
+                    <button type="button" class="keyword-btn bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none"
+                            data-keyword="keyword5">+</button>
+                </div>
+            </div>
+            <button type="submit"
+                    class="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 focus:outline-none">
+                가입하기
+            </button>
+        </form>
+    </div>
+</body>
+</html>
