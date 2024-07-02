@@ -9,7 +9,9 @@
 </head>
 
 <style>
-
+    .margin-r {
+        margin-right: 2rem;
+    }
 </style>
 
 <body>
@@ -20,22 +22,22 @@
         </div>
         <!-- Profile and Logout -->
         <div class="flex items-center">
-            <a href="https://example.com/logout" class="text-blue-500 hover:underline">Logout</a>
+            <a href="https://example.com/logout" class="text-blue-500 hover:underline margin-r">Logout</a>
             <img src="your-profile-url.png" alt="Profile" class="h-10 w-10 rounded-full ml-3">
         </div>
     </header>
     <div class="container mx-auto mt-8 px-4">
         <div class="max-w-md mx-auto bg-white rounded-lg shadow-md overflow-hidden">
             <div class="p-4">
-                <label for="id" class="block text-gray-700 font-medium mb-2">ID:</label>
-                <input type="text" id="id" name="id" value="user123" readonly
+                <label for="email" class="block text-gray-700 font-medium mb-2">ID</label>
+                <input type="email" id="email" name="email" value="user123@gmil.com" readonly
                     class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 bg-gray-100">
 
-                <label for="password" class="block text-gray-700 font-medium mt-4 mb-2">Password:</label>
+                <label for="password" class="block text-gray-700 font-medium mt-4 mb-2">Password</label>
                 <input type="password" id="password" name="password" value="*********" readonly
                     class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 bg-gray-100">
 
-                <label for="nickname" class="block text-gray-700 font-medium mt-4 mb-2">Nickname:</label>
+                <label for="nickname" class="block text-gray-700 font-medium mt-4 mb-2">Nickname</label>
                 <div class="flex">
                     <input type="text" id="nickname" name="nickname" value="Nickname123" required
                         class="flex-grow px-3 py-2 border border-gray-300 rounded-l-lg focus:outline-none focus:border-blue-500">
@@ -70,7 +72,7 @@
                     수정
                 </button>
             </div>
-            
+
         </div>
         <div class="max-w-md mx-auto overflow-hidden mt-6">
             <div class="flex justify-between">
@@ -78,12 +80,12 @@
                 <a href="https://example.com/second-link" class="text-blue-500 hover:underline">회원 탈퇴</a>
             </div>
         </div>
-        
+
         <!-- <div class="flex justify-between mt-4 px-4">
             <a href="https://example.com/settings" class="text-blue-500 hover:underline mr-auto ml-4">Account Settings</a>
             <a href="https://example.com/delete-account" class="text-red-500 hover:underline mr-4 ml-auto">Delete Account</a>
         </div> -->
-        
+
         <!-- <div class="margin-t">
             
         </div> -->
