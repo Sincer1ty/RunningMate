@@ -58,49 +58,35 @@ function Interest(){
     alert('흥미체크중복확인');
 }
 
-function toggleCategory(element) {
-    // 클릭된 항목의 선택 상태를 토글합니다
-    element.classList.toggle('selected');
-}
-
-// 추가버튼
-
-document.addEventListener('DOMContentLoaded', function() {
-    const toggleItems = document.querySelectorAll('.Pbutton');
-    const inputBox = document.getElementById('inputBox');
-    const sideElementsContainer = document.getElementById('sideElements');
-
-    toggleItems.forEach(item => {
-        item.addEventListener('click', function() {
-            toggleItems.forEach(i => i.classList.remove('selected'));
-            this.classList.add('selected');
-            inputBox.style.display = 'block'; // Show input box
-        });
+$(document).ready(function() {
+    $('.flex .toggle').click(function() {
+        $(this).toggleClass('selected');
     });
 
-    inputBox.addEventListener('keyup', function(event) {
-        if (event.key === 'Enter') {
-            const inputValue = inputBox.value.trim();
-            if (inputValue) {
-                // Create a new side element
-                const sideElement = document.createElement('div');
-                sideElement.classList.add('tag-toggle'); // Add class
-                sideElement.onclick = function() {
-                    toggleCategory(this); // Add onclick function
-                };
-                const img = document.createElement('img');
-                img.classList.add('check');
-                img.src = 'check0.svg'; // Set image source
-                const title = document.createElement('div');
-                title.classList.add('title');
-                title.textContent = inputValue; // Set title text
-                sideElement.appendChild(img);
-                sideElement.appendChild(title);
-                sideElementsContainer.appendChild(sideElement);
-
-                inputBox.value = ''; // Clear input
-                inputBox.style.display = 'none'; // Hide input box
-            }
+    $('#addButton').click(function() {
+        const inputBox = $(this).next('.new-input');
+        if (inputBox.length) {
+            inputBox.remove();
+        } else {
+            const newInputBox = $('<input type="text" class="new-input bg-gray-200 text-gray-700 px-3 py-2 rounded-lg focus:outline-none" placeholder="New Keyword" />');
+            newInputBox.on('keypress', function(event) {
+                if (event.which == 13) { // Enter key pressed
+                    const keyword = $(this).val();
+                    if (keyword.trim() !== '') {
+                        const newElement = $('<div class="toggle-button bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none"></div>').text(keyword);
+                        newElement.click(function() {
+                            $(this).toggleClass('selected');
+                        });
+                        $('#addButton').before(newElement);
+                    }
+                    $(this).remove(); // Remove the input box after adding the keyword
+                }
+            });
+            $(this).after(newInputBox);
+            newInputBox.focus(); // Focus on the input box
         }
     });
+
+
+
 });
