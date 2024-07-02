@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <style>
     .drag-n {
@@ -14,7 +15,17 @@
         -ms-user-select: none;
         user-select: none
     }
+
+    .selected {
+        background-color: #4caf50;
+        /* 선택되었을 때의 배경색 */
+        color: white;
+        /* 선택되었을 때의 글자색 */
+    }
 </style>
+
+<script src="Script.js"></script>
+
 
 <body class="bg-gray-100 flex items-center justify-center h-screen">
     <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
@@ -38,7 +49,7 @@
             </div>
             <div class="mb-4">
                 <label for="confirm_password" class="block text-gray-700 font-medium mb-2">PW 확인</label>
-                <input type="password" id="password" name="password" required
+                <input type="password" id="confirm_password" name="password" required
                     class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
             </div>
             <div class="mb-4">
@@ -52,18 +63,24 @@
                     </button>
                 </div>
             </div>
+
+
+
+
+
             <div class="mb-4">
                 <label class="block text-gray-700 font-medium mb-2">관심사</label>
                 <div class="flex flex-wrap gap-2">
-                    <div class="bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none drag-n"
+                    <div class="bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none drag-n toggle"
                         data-keyword="keyword1">Keyword 1</div>
-                    <div class="bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none drag-n"
+                    <div class="bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none drag-n toggle"
                         data-keyword="keyword2">Keyword 2</div>
-                    <div class="bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none drag-n"
+                    <div class="bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none drag-n toggle"
                         data-keyword="keyword3">Keyword 3</div>
-                    <div class="bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none drag-n"
+                    <div class="bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none drag-n toggle"
                         data-keyword="keyword4">Keyword 4</div>
-                    <div class="bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none drag-n"
+                    <div id="addButton"
+                        class="bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none drag-n"
                         data-keyword="keyword5">+</div>
                 </div>
             </div>
