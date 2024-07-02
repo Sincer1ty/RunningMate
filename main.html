@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>러닝메이트</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        
+         .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 20;
+        }
+
+        .overlay .content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            height: 100%;
+            width: 100%;/* 너비를 90%로 설정 */
+            max-width: 1300px; /* 최대 너비를 1000px로 설정 */
+            max-height: 800px; /* 최대 높이를 90%로 설정 */
+            overflow-y: auto; /* 내용이 넘칠 경우 스크롤 가능하게 설정 */
+        }
+        .toggle-button-group {
+            display: flex;
+           
+            border-radius: 9999px;
+            overflow: hidden;
+        }
+        .toggle-button {
+            flex: 1;
+            padding: 0.5rem 1rem;
+            text-align: center;
+            cursor: pointer;
+        }
+        .toggle-button.active {
+            background-color: rgb(192, 192, 192);
+            color: #000000;
+        }
+        .toggle-button.inactive {
+            background-color: white;
+            color: #4a5568;
+        }
+        .local{
+            border-radius: 9999px;
+        }
+
+        *{
+  font-family: "Noto Sans KR", sans-serif;
+  font-style: normal;
+}
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+            }
+        .card-group{
+            height: 900px;
+        }
+        .scroll{
+            height: 93%;
+        }
+        .profile-dropdown {
+            display: none;
+            position: absolute;
+            top: 70px;
+        
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            z-index: 10;
+        }
+
+        .profile-dropdown a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: #333;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .profile-dropdown a:hover {
+            background-color: #f0f0f0;
+        }
+
+        .profile-dropdown a:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+    <header class="bg-white shadow">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <!-- Web Title -->
+            <h1 class="text-2xl font-bold text-gray-800">러닝메이트</h1>
+
+            <!-- Right section with Logout button and Profile picture -->
+            <div class="flex items-center space-x-4">
+                <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                    Logout
+                </button>
+                <img src="https://via.placeholder.com/40" alt="Profile Picture" class="relative w-10 h-10 rounded-full cursor-pointer" onclick="toggleProfileDropdown()">
+  
+            </div>
+        </div>
+    </header>
+    <div class="flex container mx-auto">
+        <h1 class="text-5xl p-8">추천 스터디에요!</h1>
+        <div class="flex-grow"></div>
+        <div id="profileDropdown" class="hidden mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg">
+            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">개인정보 수정</a>
+            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">만든 스터디</a>
+        </div>
+    </div>
+    <!-- Main content -->
+    <main class="flex container mx-auto mt-8 px-4 space-x-4 ">
+        <!-- Vertical cards -->
+    <div class="card-group flex bg-white p-8 rounded-lg ">
+        <div class="card-container bg-gray-500 p-3 space-y-4 mr-2 w-1/3 rounded-lg">
+            <!-- Toggle Button -->
+            <div class="toggle-button-group h-12 flex">
+                <div class="toggle-button active flex items-center justify-center " onclick="toggleButton(this)">대면</div>
+                <div class="toggle-button inactive flex items-center justify-center" onclick="toggleButton(this)">비대면</div>
+            </div>
+            <div class="scroll space-y-4 overflow-y-auto no-scrollbar">
+                
+                <!-- Card 1 -->
+                <div class="card bg-white shadow-md rounded-lg p-6 h-64" onclick="openModal()">
+                    <h2 class="text-xl font-bold mb-2">Card Title 1</h2>
+                    <p class="text-gray-700">This is a description of the first card. You can put any content here.</p>
+                </div>
+    
+                <!-- Card 2 -->
+                <div class="card bg-white shadow-md rounded-lg p-6 h-64">
+                    <h2 class="text-xl font-bold mb-2">Card Title 2</h2>
+                    <p class="text-gray-700">This is a description of the second card. You can put any content here.</p>
+                </div>
+    
+                <!-- Card 3 -->
+                <div class="card bg-white shadow-md rounded-lg p-6 h-64">
+                    <h2 class="text-xl font-bold mb-2">Card Title 3</h2>
+                    <p class="text-gray-700">This is a description of the third card. You can put any content here.</p>
+                </div>
+                <div class="card bg-white shadow-md rounded-lg p-6 h-64">
+                    <h2 class="text-xl font-bold mb-2">Card Title 3</h2>
+                    <p class="text-gray-700">This is a description of the third card. You can put any content here.</p>
+                </div>
+                <div class="card bg-white shadow-md rounded-lg p-6 h-64">
+                    <h2 class="text-xl font-bold mb-2">Card Title 3</h2>
+                    <p class="text-gray-700">This is a description of the third card. You can put any content here.</p>
+                </div>
+            </div>
+        </div>
+        <div class="card-container bg-gray-500 p-3 space-y-4 mr-2 w-1/3 rounded-lg">
+            <!-- Toggle Button -->
+            <div class="local flex bg-white h-12 items-center justify-between ">
+                <div class="bg-gray-100 w-1/3 h-full flex items-center justify-center text-center rounded-l-full ">지역</div>
+                <div class="bg-white w-2/3 h-full flex items-center justify-center text-center rounded-r-full">서울</div>
+            </div>
+            <div class="scroll space-y-4 overflow-y-auto no-scrollbar">
+                
+                <!-- Card 1 -->
+                <div class="card bg-white shadow-md rounded-lg p-6 h-64">
+                    <h2 class="text-xl font-bold mb-2">Card Title 1</h2>
+                    <p class="text-gray-700">This is a description of the first card. You can put any content here.</p>
+                </div>
+    
+                <!-- Card 2 -->
+                <div class="card bg-white shadow-md rounded-lg p-6 h-64">
+                    <h2 class="text-xl font-bold mb-2">Card Title 2</h2>
+                    <p class="text-gray-700">This is a description of the second card. You can put any content here.</p>
+                </div>
+    
+                <!-- Card 3 -->
+                <div class="card bg-white shadow-md rounded-lg p-6 h-64">
+                    <h2 class="text-xl font-bold mb-2">Card Title 3</h2>
+                    <p class="text-gray-700">This is a description of the third card. You can put any content here.</p>
+                </div>
+                <div class="card bg-white shadow-md rounded-lg p-6 h-64">
+                    <h2 class="text-xl font-bold mb-2">Card Title 3</h2>
+                    <p class="text-gray-700">This is a description of the third card. You can put any content here.</p>
+                </div>
+                <div class="card bg-white shadow-md rounded-lg p-6 h-64">
+                    <h2 class="text-xl font-bold mb-2">Card Title 3</h2>
+                    <p class="text-gray-700">This is a description of the third card. You can put any content here.</p>
+                </div>
+            </div>
+        </div>
+        <div class="card-container bg-gray-500 p-3 space-y-4 mr-2 w-1/3 rounded-lg">
+            <!-- Toggle Button -->
+            <div class="local flex bg-white h-12 items-center justify-between ">
+                <div class="bg-gray-100 w-1/3 h-full flex items-center justify-center text-center rounded-l-full ">기간</div>
+                <div class="bg-white w-2/3 h-full flex items-center justify-center text-center rounded-r-full">24.12.02~25.01.15</div>
+            </div>
+            <div class="scroll space-y-4 overflow-y-auto no-scrollbar">
+                
+                <!-- Card 1 -->
+                <div class="bg-white shadow-md rounded-lg p-6 h-64">
+                    <h2 class="text-xl font-bold mb-2">Card Title 1</h2>
+                    <p class="text-gray-700">This is a description of the first card. You can put any content here.</p>
+                </div>
+    
+                <!-- Card 2 -->
+                <div class="bg-white shadow-md rounded-lg p-6 h-64">
+                    <h2 class="text-xl font-bold mb-2">Card Title 2</h2>
+                    <p class="text-gray-700">This is a description of the second card. You can put any content here.</p>
+                </div>
+    
+                <!-- Card 3 -->
+                <div class="bg-white shadow-md rounded-lg p-6 h-64">
+                    <h2 class="text-xl font-bold mb-2">Card Title 3</h2>
+                    <p class="text-gray-700">This is a description of the third card. You can put any content here.</p>
+                </div>
+                <div class="bg-white shadow-md rounded-lg p-6 h-64">
+                    <h2 class="text-xl font-bold mb-2">Card Title 3</h2>
+                    <p class="text-gray-700">This is a description of the third card. You can put any content here.</p>
+                </div>
+                <div class="bg-white shadow-md rounded-lg p-6 h-64">
+                    <h2 class="text-xl font-bold mb-2">Card Title 3</h2>
+                    <p class="text-gray-700">This is a description of the third card. You can put any content here.</p>
+                </div>
+            </div>
+        </div>
+ 
+
+    </div>
+        <!-- Modal ------------------------------------------------------------------------------------------------------------->
+    <div id="modal" class="overlay flex mx-auto">
+        <div class="content">
+            <button class="bg-red-500 text-white px-4 py-2 rounded-full float-right" onclick="closeModal()">X</button>
+            <!-- Title Input -->
+            <h1>알고리즘 스터디</h1>
+            <hr></hr>
+            <!-- Content Textarea -->
+            <p>장소: 홍대 9번 출구 스터디 룸
+
+                규칙: 매주 한 명 씩 돌아가며 알고리즘 주제 정해서 발표
+                3회 이상 무단 결석 시 스터디 장이 스터디 중단 권유 할 수 있음.</p>
+
+            <div class="flex-col space-y-4 w-full mt-4">
+                <p>예상 기간</p>
+                <div >
+                    2024-0722~2024-08-22
+                </div>
+
+                <p>연락 링크</p>
+                <div >
+                    https://open.kakao.com/learningMate
+                </div>
+                <p>관심사</p>
+                <div >
+                    알고리즘,코딩
+                </div>
+
+                <p>대면/비대면</p>
+                <div >
+                    대면,서울
+                </div>
+
+                <p>난이도</p>
+                <div >
+                    중
+                </div>
+
+
+                <p>친목여부(선택사항)</p>
+                <div >
+                    없음
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- Right section with buttons -->
+        <div class="flex flex-col space-y-4 w-1/4 ml-4">
+            <div class="bg-gray-500 space-y-4 w-auto p-2 flex flex-col space-y-4 rounded-lg">
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    +스터디 생성
+                </button>
+                <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                    <i class="fa-solid fa-arrows-rotate">스터디매칭</i>
+                </button>
+            </div>
+        </div>
+    </main>
+    <script>
+        function toggleProfileDropdown() {
+            const dropdown = document.getElementById('profileDropdown');
+            if (dropdown.style.display === 'block') {
+                dropdown.style.display = 'none';
+            } else {
+                dropdown.style.display = 'block';
+            }
+        }
+    
+        // Close the dropdown if the user clicks outside of it
+     
+    </script>
+    <script>
+        function toggleButton(button) {
+            const buttons = document.querySelectorAll('.toggle-button');
+            buttons.forEach(btn => {
+                btn.classList.remove('active');
+                btn.classList.add('inactive');
+            });
+            button.classList.add('active');
+            button.classList.remove('inactive');
+        }
+        function openModal() {
+            document.getElementById('modal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>
