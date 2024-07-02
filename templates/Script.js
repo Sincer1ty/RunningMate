@@ -59,8 +59,15 @@ function Interest(){
 }
 
 $(document).ready(function() {
-    $('.flex .toggle').click(function() {
+    $('.toggle').click(function() {
         $(this).toggleClass('selected');
+        if ($(this).hasClass('selected')) {
+            $(this).css('background-color', '#4caf50');
+            $(this).css('color', 'white');
+        } else {
+            $(this).css('background-color', '');
+            $(this).css('color', '');
+        }
     });
 
     $('#addButton').click(function() {
@@ -76,6 +83,13 @@ $(document).ready(function() {
                         const newElement = $('<div class="toggle-button bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none"></div>').text(keyword);
                         newElement.click(function() {
                             $(this).toggleClass('selected');
+                            if ($(this).hasClass('selected')) {
+                                $(this).css('background-color', '#4caf50');
+                                $(this).css('color', 'white');
+                            } else {
+                                $(this).css('background-color', '');
+                                $(this).css('color', '');
+                            }
                         });
                         $('#addButton').before(newElement);
                     }
@@ -86,7 +100,4 @@ $(document).ready(function() {
             newInputBox.focus(); // Focus on the input box
         }
     });
-
-
-
 });
