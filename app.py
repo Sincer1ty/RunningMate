@@ -41,7 +41,8 @@ def login():
 
 @app.route('/make')
 def make():
-   return env.get_template('create.html').render()
+   week =["월","화","수","목","금","토","일"]
+   return env.get_template('create.html').render(week=week)
 
 
 @app.route('/make', methods = ['POST'])
@@ -151,9 +152,9 @@ def  IdCheck():
         return '유효하지 않은 이메일 형식입니다.'
      result = db.userInfo.find_one({"id": id}, {'_id': 0})
      if result:
-         return "이 아이디는 이미 사용중입니다."
+        return "이 아이디는 이미 사용중입니다."
      else:
-         return "이 아이디는 사용이 가능합니다."
+        return "이 아이디는 사용이 가능합니다."
 
 
 @app.route('/nickCheck',methods=['POST'])
@@ -163,9 +164,9 @@ def  NickCheck():
         return '닉네임을 입력해주세요.'
      result = db.userInfo.find_one({"nickname": nickName}, {'_id': 0})
      if result:
-         return "이 닉네임은 이미 사용중입니다."
+        return "이 닉네임은 이미 사용중입니다."
      else:
-         return "이 닉네임은 사용이 가능합니다."
+        return "이 닉네임은 사용이 가능합니다."
 
 
 

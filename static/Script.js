@@ -1,9 +1,5 @@
 // 헤더 공통부분 
 
-function profile(){
-    alert('정보수정으로 가기');
-}
-
 function myStudy() {
     window.location.href = "/MyStudy";
   }
@@ -66,17 +62,10 @@ function Create() {
 
 // 로그인
 
-function Login(){
-    alert('로그인 아이디 비밀번호');
-}
 
-function Join(){
-    alert('회원가입페이지');
-}
 
-function FindPass(){
-    alert('비밀번호 찾기');
-}
+
+
 
 function changePw() { 
     window.location.href = '/change_pw';
@@ -115,7 +104,7 @@ function IdCheck() {
 
 
     
-    // alert(currentID);
+
   
    
 }
@@ -134,13 +123,13 @@ function NickCheck() {
     })
 }
 
-function Interest(){
-    alert('흥미체크중복확인');
-}
 
 
 
 $(document).ready(function () {
+
+
+
   
     OnOffSelect = document.querySelector('#on_off')
     if (OnOffSelect!=null) {
@@ -181,6 +170,15 @@ $(document).ready(function () {
         list = $(this).parent().children();
         console.log($(this).prop('tagName'));
         flag = false;
+
+        var selectedInputs = list.filter('input.selected').filter(function() {
+            return !$(this).hasClass('week');
+        }).length;
+    
+        if (selectedInputs >= 3 && !$(this).hasClass('selected') && !$(this).hasClass('week')) {
+            return;
+        }
+
         if ($(this).prop('tagName') == 'INPUT') {
             console.log('tagName: INPUT');
             //input 이면 중복 허용
@@ -192,7 +190,6 @@ $(document).ready(function () {
                 console.log('if');
                 flag = true;
             }
-
             if (!flag) {
                 $(this).toggleClass('selected');
 
