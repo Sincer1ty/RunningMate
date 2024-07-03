@@ -101,7 +101,9 @@
 </head>
 
 <body class="bg-gray-100">
+
     {% include 'header.html'%}
+
     <div class="flex container mx-auto">
         <h1 class="text-5xl p-8">추천 스터디에요!</h1>
       </div>
@@ -112,112 +114,74 @@
         <div class="card-container bg-blue-500 p-3 space-y-4 mr-2 w-1/3 rounded-lg">
             <!-- Toggle Button -->
             <div class="toggle-button-group h-12 flex">
-                <div class="toggle-button active flex items-center justify-center " onclick="toggleButton(this)">대면</div>
-                <div class="toggle-button inactive flex items-center justify-center" onclick="toggleButton(this)">비대면</div>
+                <div class="bg-gray-100 w-1/3 h-full flex items-center justify-center text-center rounded-l-full ">지역</div>
+                <div class="bg-white w-2/3 h-full flex items-center justify-center text-center rounded-r-full">서울</div>
             </div>
             <div class="scroll space-y-4 overflow-y-auto no-scrollbar">
-                
+                {% for i in location:%}
                 <!-- Card 1 -->
                 <div class="card bg-white shadow-md rounded-lg p-6 h-64" onclick="openModal()">
-                    <h2 class="text-xl font-bold mb-2">Card Title 1</h2>
-                    <p class="text-gray-700">This is a description of the first card. You can put any content here.</p>
+                    <h2 class="text-xl font-bold mb-2">{{i.name}}</h2>
+                    <p class="text-gray-700">{{i.content}}</p>
+                    <p class="text-gray-700">{{i.location}}</p>
+                    <p class="text-gray-700">{{i.period}}</p>
+                    <p class="text-gray-700">{{i.time}}</p>
+                    <p class="text-gray-700">{{i.link}}</p>
+                    <p class="text-gray-700">{{i.subject}}</p>
+                    <p class="text-gray-700">{{i.on_off}}</p>
+
                 </div>
-    
-                <!-- Card 2 -->
-                <div class="card bg-white shadow-md rounded-lg p-6 h-64">
-                    <h2 class="text-xl font-bold mb-2">Card Title 2</h2>
-                    <p class="text-gray-700">This is a description of the second card. You can put any content here.</p>
-                </div>
-    
-                <!-- Card 3 -->
-                <div class="card bg-white shadow-md rounded-lg p-6 h-64">
-                    <h2 class="text-xl font-bold mb-2">Card Title 3</h2>
-                    <p class="text-gray-700">This is a description of the third card. You can put any content here.</p>
-                </div>
-                <div class="card bg-white shadow-md rounded-lg p-6 h-64">
-                    <h2 class="text-xl font-bold mb-2">Card Title 3</h2>
-                    <p class="text-gray-700">This is a description of the third card. You can put any content here.</p>
-                </div>
-                <div class="card bg-white shadow-md rounded-lg p-6 h-64">
-                    <h2 class="text-xl font-bold mb-2">Card Title 3</h2>
-                    <p class="text-gray-700">This is a description of the third card. You can put any content here.</p>
-                </div>
+                
+
+
+                {% endfor %}
+                
             </div>
         </div>
         <div class="card-container bg-blue-500 p-3 space-y-4 mr-2 w-1/3 rounded-lg">
             <!-- Toggle Button -->
             <div class="local flex bg-white h-12 items-center justify-between ">
-                <div class="bg-gray-100 w-1/3 h-full flex items-center justify-center text-center rounded-l-full ">지역</div>
-                <div class="bg-white w-2/3 h-full flex items-center justify-center text-center rounded-r-full">서울</div>
+                <div class="toggle-button active flex items-center justify-center " onclick="toggleButton(this)">대면</div>
+                <div class="toggle-button inactive flex items-center justify-center" onclick="toggleButton(this)">비대면</div>
+                
             </div>
             <div class="scroll space-y-4 overflow-y-auto no-scrollbar">
-                
+                {% for i in on_off:%}
                 <!-- Card 1 -->
-                <div class="card bg-white shadow-md rounded-lg p-6 h-64">
-                    <h2 class="text-xl font-bold mb-2">Card Title 1</h2>
-                    <p class="text-gray-700">This is a description of the first card. You can put any content here.</p>
+                <div class="card bg-white shadow-md rounded-lg p-6 h-64" onclick="openModal()">
+                    <h2 class="text-xl font-bold mb-2">{{i.name}}</h2>
+                    <p class="text-gray-700">{{i.content}}</p>
+                    <p class="text-gray-700">{{i.location}}</p>
+                    <p class="text-gray-700">{{i.level}}</p>
                 </div>
-    
-                <!-- Card 2 -->
-                <div class="card bg-white shadow-md rounded-lg p-6 h-64">
-                    <h2 class="text-xl font-bold mb-2">Card Title 2</h2>
-                    <p class="text-gray-700">This is a description of the second card. You can put any content here.</p>
-                </div>
-    
-                <!-- Card 3 -->
-                <div class="card bg-white shadow-md rounded-lg p-6 h-64">
-                    <h2 class="text-xl font-bold mb-2">Card Title 3</h2>
-                    <p class="text-gray-700">This is a description of the third card. You can put any content here.</p>
-                </div>
-                <div class="card bg-white shadow-md rounded-lg p-6 h-64">
-                    <h2 class="text-xl font-bold mb-2">Card Title 3</h2>
-                    <p class="text-gray-700">This is a description of the third card. You can put any content here.</p>
-                </div>
-                <div class="card bg-white shadow-md rounded-lg p-6 h-64">
-                    <h2 class="text-xl font-bold mb-2">Card Title 3</h2>
-                    <p class="text-gray-700">This is a description of the third card. You can put any content here.</p>
-                </div>
+                {% endfor %}
+                
+
+                
             </div>
         </div>
         <div class="card-container bg-blue-500 p-3 space-y-4 mr-2 w-1/3 rounded-lg">
             <!-- Toggle Button -->
             <div class="local flex bg-white h-12 items-center justify-between ">
                 <div class="bg-gray-100 w-1/3 h-full flex items-center justify-center text-center rounded-l-full ">기간</div>
-                <div class="bg-white w-2/3 h-full flex items-center justify-center text-center rounded-r-full">24.12.02~25.01.15</div>
+                <div class="bg-white w-2/3 h-full flex items-center justify-center text-center rounded-r-full">{{User.week}}</div>
             </div>
             <div class="scroll space-y-4 overflow-y-auto no-scrollbar">
-                
+                {% for i in week %}
                 <!-- Card 1 -->
-                <div class="bg-white shadow-md rounded-lg p-6 h-64">
-                    <h2 class="text-xl font-bold mb-2">Card Title 1</h2>
-                    <p class="text-gray-700">This is a description of the first card. You can put any content here.</p>
+                <div class="bg-white shadow-md rounded-lg p-6 h-64"  onclick="openModal()">
+                    <h2 class="text-xl font-bold mb-2">{{i.name}}</h2>
+                    <p class="text-gray-700">{{i.content}}</p>
+                    <p class="text-gray-700">{{i.location}}</p>
+                    <p class="text-gray-700">{{i.level}}</p>
                 </div>
-    
-                <!-- Card 2 -->
-                <div class="bg-white shadow-md rounded-lg p-6 h-64">
-                    <h2 class="text-xl font-bold mb-2">Card Title 2</h2>
-                    <p class="text-gray-700">This is a description of the second card. You can put any content here.</p>
-                </div>
-    
-                <!-- Card 3 -->
-                <div class="bg-white shadow-md rounded-lg p-6 h-64">
-                    <h2 class="text-xl font-bold mb-2">Card Title 3</h2>
-                    <p class="text-gray-700">This is a description of the third card. You can put any content here.</p>
-                </div>
-                <div class="bg-white shadow-md rounded-lg p-6 h-64">
-                    <h2 class="text-xl font-bold mb-2">Card Title 3</h2>
-                    <p class="text-gray-700">This is a description of the third card. You can put any content here.</p>
-                </div>
-                <div class="bg-white shadow-md rounded-lg p-6 h-64">
-                    <h2 class="text-xl font-bold mb-2">Card Title 3</h2>
-                    <p class="text-gray-700">This is a description of the third card. You can put any content here.</p>
-                </div>
+                {% endfor %}
             </div>
         </div>
- 
 
     </div>
         <!-- Modal ------------------------------------------------------------------------------------------------------------->
+
     <div id="modal" class="overlay flex mx-auto">
         <div class="content">
             <button class="bg-red-500 text-white px-4 py-2 rounded-full float-right" onclick="closeModal()">X</button>
@@ -277,6 +241,7 @@
         <div class="flex flex-col space-y-4 w-1/4 ml-4">
             <div class="bg-white space-y-4 w-auto p-2 flex flex-col space-y-4 rounded-lg">
                 <button onclick="create()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+
                     +스터디 생성
                 </button>
                 <button onclick="matching()" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
@@ -296,14 +261,34 @@
             button.classList.add('active');
             button.classList.remove('inactive');
         }
-        function openModal() {
-            document.getElementById('modal').style.display = 'flex';
-        }
+    function openModal(name, content, period, link, subject, on_off, level, leader) {
+        document.getElementById('modal').style.display = 'flex';
 
-        function closeModal() {
-            document.getElementById('modal').style.display = 'none';
-        }
-      
+        var name = this.getAttribute('data-name');
+        var content = this.getAttribute('data-content');
+        var period = this.getAttribute('data-period');
+        var time = this.getAttribute('data-time');
+        var link = this.getAttribute('data-link');
+        var subject = this.getAttribute('data-subject');
+        var on_off = this.getAttribute('data-on_off');
+        var level = this.getAttribute('data-level');
+        var leader = this.getAttribute('data-leader');
+        
+        // 모달 내용 업데이트
+        document.getElementById('modalTitle').innerText = name;
+        document.getElementById('modalContent').innerText = content;
+        document.getElementById('modalPeriod').innerText = period;
+        document.getElementById('modalLink').innerText = link;
+        document.getElementById('modalSubject').innerText = subject;
+        document.getElementById('modalOnOff').innerText = on_off;
+        document.getElementById('modalLevel').innerText = level;
+        document.getElementById('modalLeader').innerText = leader;
+    }
+
+    function closeModal() {
+        document.getElementById('modal').style.display = 'none';
+    }
+
     </script>
     <script src="/static/Script.js"></script>
 </body>
