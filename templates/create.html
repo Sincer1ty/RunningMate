@@ -117,11 +117,11 @@
               />~<input name="end_period" class="ml-2 rounded-md" type="date" />
             </div>
             <p>시간</p>
-            <div class="flex flex-wrap gap-2">
+            <div id="week" class="flex flex-wrap gap-2">
               {% for day in week %}
               <input
                 type="text"
-                id="keyword1"
+                
                 value="{{day}}"
                 readonly
                 class="w-full bg-gray-200 p-2 text-gray-700 focus:outline-none rounded-md h-10 drag-n cursor-pointer toggle"
@@ -208,33 +208,23 @@
                 <div
                   class="bg-gray-200 text-gray-700 px-3 py-2 rounded-lg focus:outline-none drag-n toggle"
                   data-keyword="keyword1"
-                >
-                  상
-                </div>
+                >상</div>
                 <div
                   class="bg-gray-200 text-gray-700 px-3 py-2 rounded-lg focus:outline-none drag-n toggle"
                   data-keyword="keyword2"
-                >
-                  중상
-                </div>
+                >중상</div>
                 <div
                   class="bg-gray-200 text-gray-700 px-3 py-2 rounded-lg focus:outline-none drag-n toggle"
                   data-keyword="keyword3"
-                >
-                  중
-                </div>
+                >중</div>
                 <div
                   class="bg-gray-200 text-gray-700 px-3 py-2 rounded-lg focus:outline-none drag-n toggle"
                   data-keyword="keyword4"
-                >
-                  중하
-                </div>
+                >중하</div>
                 <div
                   class="bg-gray-200 text-gray-700 px-3 py-2 rounded-lg focus:outline-none drag-n toggle"
                   data-keyword="keyword5"
-                >
-                  하
-                </div>
+                >하</div>
               </div>
             </div>
 
@@ -244,15 +234,11 @@
                 <div
                   class="bg-gray-200 text-gray-700 px-3 py-2 rounded-lg focus:outline-none drag-n toggle"
                   data-keyword="keyword1"
-                >
-                  있음
-                </div>
+                >있음</div>
                 <div
                   class="bg-gray-200 text-gray-700 px-3 py-2 rounded-lg focus:outline-none drag-n toggle"
                   data-keyword="keyword2"
-                >
-                  없음
-                </div>
+                >없음</div>
               </div>
             </div>
 
