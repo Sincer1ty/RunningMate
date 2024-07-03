@@ -41,7 +41,8 @@ def login():
 
 @app.route('/make')
 def make():
-   return env.get_template('create.html').render()
+   week =["월","화","수","목","금","토","일"]
+   return env.get_template('create.html').render(week=week)
 
 
 @app.route('/make', methods = ['POST'])
