@@ -48,7 +48,7 @@
             cursor: pointer;
         }
         .toggle-button.active {
-            background-color: rgb(192, 192, 192);
+            background-color: rgb(99, 185, 255);
             color: #000000;
         }
         .toggle-button.inactive {
@@ -140,9 +140,9 @@
         </div>
         <div class="card-container bg-blue-500 p-3 space-y-4 mr-2 w-1/3 rounded-lg">
             <!-- Toggle Button -->
-            <div class="local flex bg-white h-12 items-center justify-between ">
-                <div class="toggle-button active flex items-center justify-center " onclick="toggleButton(this)">대면</div>
-                <div class="toggle-button inactive flex items-center justify-center" onclick="toggleButton(this)">비대면</div>
+            <div class="toggle-button-group local flex bg-white h-12 items-center justify-between ">
+                <div class="toggle-button h-32 active flex items-center justify-center " onclick="toggleButton(this)">대면</div>
+                <div class="toggle-button h-32 inactive flex items-center justify-center" onclick="toggleButton(this)">비대면</div>
                 
             </div>
             <div class="scroll space-y-4 overflow-y-auto no-scrollbar">
@@ -244,7 +244,7 @@
 
                     +스터디 생성
                 </button>
-                <button onclick="matching()" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                <button onclick="matching()" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">
                     스터디매칭
                 </button>
             </div>
