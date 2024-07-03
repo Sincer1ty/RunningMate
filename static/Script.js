@@ -76,7 +76,7 @@ function changePw() {
 
 function JoinConf() {
 
-    alert('회원가입 완료');
+    // alert('회원가입 완료');
 
 }
 
@@ -103,7 +103,7 @@ function IdCheck() {
             // 리스폰스만 얼럿이 뜨는 이유가 뭘까?
         }
     })
-
+}
 
 
 function NickCheck() {
@@ -163,10 +163,10 @@ $(document).ready(function () {
         console.log($(this).prop('tagName'));
         flag = false;
 
-        var selectedInputs = list.filter('input.selected').filter(function() {
+        var selectedInputs = list.filter('input.selected').filter(function () {
             return !$(this).hasClass('week');
         }).length;
-    
+
         if (selectedInputs >= 3 && !$(this).hasClass('selected') && !$(this).hasClass('week')) {
             return;
         }
@@ -184,13 +184,11 @@ $(document).ready(function () {
             }
             if (!flag) {
                 $(this).toggleClass('selected');
-
-                console.log('check');
-            }
+                    console.log('check');
+                }
             else {
                 flag = false;
                 $(this).removeClass('selected');
-
                 console.log('off');
             }
         }
@@ -207,7 +205,7 @@ $(document).ready(function () {
                     const keyword = $(this).val();
                     if (keyword.trim() !== '') {
                         const newElement = $(`<input type="text" name="keyword1" value="${keyword}" readonly
-                            class="w-full bg-gray-200 p-2 text-gray-700 hover:bg-gray-300 focus:outline-none rounded-md h-10 drag-n cursor-pointer toggle" />`);
+                        class="w-full bg-gray-200 p-2 text-gray-700 hover:bg-gray-300 focus:outline-none rounded-md h-10 drag-n cursor-pointer toggle" />`);
                         newElement.click(function () {
                             $(this).toggleClass('selected');
                             if ($(this).hasClass('selected')) {

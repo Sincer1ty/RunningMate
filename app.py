@@ -193,13 +193,23 @@ def submit():
     'pw': pw,
     'nickname':nickname,
     }
+    email_pattern = r'^[^\s@]+@[^\s@]+\.[^\s@]+$'
+    
+    result = db.userInfo.find_one({"id": id}, {'_id': 0})
+
+    if id !="" and re.match(email_pattern, id) and not result:
+        print('not null and match')
+        db.userInfo.insert_one(data)
+    else : 
+        template = env.get_template('sign_up.html')
+
     #매칭페이지 데이터
     locations =["서울","수원","인천","대구","부산","울산","광주","전주","대전","세종","천안","청주","원주","춘천","제주","기타"]
     platforms = ["전체","슬랙","디스코드","zoom","기타"]
     week =["월","화","수","목","금","토","일"]
     levels = ["상","중상","중","중하","하"]
     moods =["몰입하는 분위기","사람들과 친해지는 분위기"]
-    db.userInfo.insert_one(data)
+    
     return template.render(moods=moods,levels=levels,week=week,locations=locations,platforms=platforms)
     
     
