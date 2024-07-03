@@ -137,7 +137,19 @@
                 type="date"
               />~<input name="end_period" class="ml-2 rounded-md" type="date" />
             </div>
+            <p>시간</p>
+            <div class="flex flex-wrap gap-2">
+              {% for day in week %}
+              <input
+                type="text"
+                id="keyword1"
+                value="{{day}}"
+                readonly
+                class="w-full bg-gray-200 p-2 text-gray-700 focus:outline-none rounded-md h-10 drag-n cursor-pointer toggle"
+              />
 
+              {% endfor %}
+            </div>
             <p>연락 링크</p>
             <input
               type="text"
