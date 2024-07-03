@@ -114,7 +114,7 @@ def make_groups():
 
         db.groups.update_one(filter_query,{"$set" : group2})
 	
-    return jsonify({'result':'success', 'msg': '이 요청은 GET!'})
+    return main()
 
 @app.route('/MyStudy')
 def MyStudy():
@@ -577,7 +577,7 @@ StudyDB = []
 for group in groups:
     StudyDB.append(group)
     
-# StudyDB = [StudyData0, StudyData1, StudyData2, StudyData3, StudyData4, StudyData5, StudyData6, StudyData7, StudyData8, StudyData9, StudyData10, StudyData11, StudyData12, StudyData13, StudyData14, StudyData15, StudyData16, StudyData17, StudyData18, StudyData19, StudyData20]
+StudyDB = [StudyData0, StudyData1, StudyData2, StudyData3, StudyData4, StudyData5, StudyData6, StudyData7, StudyData8, StudyData9, StudyData10, StudyData11, StudyData12, StudyData13, StudyData14, StudyData15, StudyData16, StudyData17, StudyData18, StudyData19, StudyData20]
 print(StudyDB)
 def subjectMatcher(List, Subject): 
     ans = []
@@ -659,13 +659,13 @@ def Matcher(List, Userdata):
     print("메인함수")
     ans = []
     on_off = []
-    location = []
+    loc = []
     week = []
 
     for i in List:
 
         if i["location"] == Userdata["location"]:
-            location.append(i)
+            loc.append(i)
             
         elif i["on_off"] == Userdata["on_off"]:
             if len(on_off) != 7:
@@ -674,7 +674,7 @@ def Matcher(List, Userdata):
         elif i["week"] == Userdata["week"]:
             week.append(i)
 
-        locans = locdef(location, Userdata)
+        locans = locdef(loc, Userdata)
 
         weekans = weekdef(week, Userdata)
         print(weekans)
@@ -683,7 +683,7 @@ def Matcher(List, Userdata):
     locans = sort_by_time(locans, 'time')
     weekans = sort_by_time(weekans, 'time')
     
-    ans = {"on_off" : on_off, "location": location, "week":week, "User":Userdata}
+    ans = {"on_off" : on_off, "location": loc, "week":week, "User":Userdata}
 
     return ans
 
