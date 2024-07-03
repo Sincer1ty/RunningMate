@@ -30,6 +30,40 @@ function Delete(){
     confirm('삭제하시겠습니까?');
 }
 
+function Create() {
+
+    list = $('#subject > .selected');
+
+    level = $('#level > .selected').text();
+    mood=$('#mood > .selected').text();
+
+    let array = [];
+    for (let i = 0; i < list.length; i++) {
+
+        keyword = list[i].value;
+        array.push(keyword);
+        console.log(array);
+    }
+
+    on_off = $('#on_off option:selected').text()
+    loc = $('#location option:selected').text()
+
+    $.ajax({
+        type: "POST",
+        url: "/make",
+        data: {
+            keyword1: array[0], keyword2: array[1], keyword3: array[2],
+            mode: 'ajax', on_off_give: on_off, location_give: loc,
+            level: level, mood: mood
+        },
+        success: function (response) { // 성공하면
+            if (response['result'] == 'success') {
+                alert(response['msg']);
+            }
+        }
+    })
+}
+
 // 로그인
 
 function Login(){
@@ -139,14 +173,35 @@ $(document).ready(function () {
             $('#offlineform').addClass('hidden');
         }
     });
-    $('.toggle').click(function() {
-        $(this).toggleClass('selected');
-        if ($(this).hasClass('selected')) {
-            $(this).css('background-color', '#4caf50');
-            $(this).css('color', 'white');
-        } else {
-            $(this).css('background-color', '');
-            $(this).css('color', '');
+    $('.toggle').click(function () {
+
+
+        list = $(this).parent().children();
+        console.log($(this).prop('tagName'));
+        flag = false;
+        if ($(this).prop('tagName') == 'INPUT') {
+            console.log('tagName: INPUT');
+            //input 이면 중복 허용
+            $(this).toggleClass('selected');
+        }
+        else {
+            //selected class 를 가진 div 가 하나 이상이면 막기
+            if (list.hasClass('selected')) {
+                console.log('if');
+                flag = true;
+            }
+
+            if (!flag) {
+                $(this).toggleClass('selected');
+
+                console.log('check');
+            }
+            else {
+                flag = false;
+                $(this).removeClass('selected');
+
+                console.log('off');
+            }
         }
     });
 
@@ -160,7 +215,8 @@ $(document).ready(function () {
                 if (event.which == 13) { // Enter key pressed
                     const keyword = $(this).val();
                     if (keyword.trim() !== '') {
-                        const newElement = $('<div id="subject" class="toggle-button bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none"></div>').text(keyword);
+                        const newElement = $(`<input type="text" name="keyword1" value="${keyword}" readonly
+                            class="w-full bg-gray-200 p-2 text-gray-700 hover:bg-gray-300 focus:outline-none rounded-md h-10 drag-n cursor-pointer toggle" />`);
                         newElement.click(function() {
                             $(this).toggleClass('selected');
                             if ($(this).hasClass('selected')) {

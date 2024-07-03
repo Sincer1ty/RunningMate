@@ -18,7 +18,23 @@
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
       rel="stylesheet"
     />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="static/Script.js"></script>
     <style>
+      .drag-n {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      .selected {
+        background-color: #4caf50;
+        /* 선택되었을 때의 배경색 */
+        color: white;
+        /* 선택되었을 때의 글자색 */
+      }
+
       .toggle-button-group {
         display: flex;
 
@@ -82,252 +98,189 @@
     <h1 class="flex container mx-auto p-8 text-5xl">스터디 만들기</h1>
     <!-- Main content -->
     <main class="flex container mx-auto mt-8 px-4 space-x-4">
-      <!-- Vertical cards -->
-      <div class="post-group w-full bg-white p-8 rounded-lg">
-        <!-- Title Input -->
+      <form action="/make" method="POST" class="flex">
         <input
           type="text"
-          placeholder="제목을 입력하세요"
-          class="w-full p-2 mt-6 mb-4 border border-gray-300 rounded-md h-10"
+          name="mode"
+          value="form"
+          class=""
+          style="display: none"
         />
 
-        <!-- Content Textarea -->
-        <textarea
-          placeholder="내용을 입력하세요"
-          class="w-full p-2 border border-gray-300 rounded-md h-5/6"
-        ></textarea>
-      </div>
-
-      <!-- Right section with buttons -->
-      <div class="flex-col space-y-4 w-1/4 ml-4">
-        <div
-          class="bg-white h-full w-auto p-2 flex flex-col space-y-4 rounded-lg"
-        >
-          <p>예상 기간</p>
-          <div class="flex">
-            <input class="mr-2 rounded-md" type="date" />~<input
-              class="ml-2 rounded-md"
-              type="date"
-            />
-          </div>
-          <p>시간</p>
-          <div class="flex gap-2" style="width: 100%">
-            <button
-              type="button"
-              class="keyword-btn bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none"
-            >
-              월
-            </button>
-            <button
-              type="button"
-              class="keyword-btn bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none"
-            >
-              화
-            </button>
-            <button
-              type="button"
-              class="keyword-btn bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none"
-            >
-              수
-            </button>
-            <button
-              type="button"
-              class="keyword-btn bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none"
-            >
-              목
-            </button>
-            <button
-              type="button"
-              class="keyword-btn bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none"
-            >
-              금
-            </button>
-            <button
-              type="button"
-              class="keyword-btn bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none"
-            >
-              토
-            </button>
-            <button
-              type="button"
-              class="keyword-btn bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none"
-            >
-              일
-            </button>
-          </div>
-          <p>연락 링크</p>
+        <div class="post-group w-full bg-white p-8 rounded-lg">
+          <!-- Title Input -->
           <input
             type="text"
-            placeholder="링크를 입력하세요"
-            class="w-full p-2 mb-2 border border-gray-300 rounded-md h-10"
+            placeholder="제목을 입력하세요"
+            name="topic"
+            class="w-full p-2 mt-6 mb-4 border border-gray-300 rounded-md h-10"
           />
-          <p>관심사</p>
-          <div class="flex flex-wrap gap-2">
-            <button
-              type="button"
-              class="keyword-btn bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none"
-              data-keyword="keyword1"
-            >
-              Keyword 1
-            </button>
-            <button
-              type="button"
-              class="keyword-btn bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none"
-              data-keyword="keyword2"
-            >
-              Keyword 2
-            </button>
-            <button
-              type="button"
-              class="keyword-btn bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none"
-              data-keyword="keyword3"
-            >
-              Keyword 3
-            </button>
-            <button
-              type="button"
-              class="keyword-btn bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none"
-              data-keyword="keyword4"
-            >
-              Keyword 4
-            </button>
-            <button
-              type="button"
-              class="keyword-btn bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none"
-              data-keyword="keyword5"
-            >
-              +
-            </button>
-          </div>
-          <p>관심사</p>
-          <div class="flex flex-wrap gap-2">
-            <button
-              type="button"
-              class="keyword-btn bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none"
-              data-keyword="keyword1"
-            >
-              Keyword 1
-            </button>
-            <button
-              type="button"
-              class="keyword-btn bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none"
-              data-keyword="keyword2"
-            >
-              Keyword 2
-            </button>
-            <button
-              type="button"
-              class="keyword-btn bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none"
-              data-keyword="keyword3"
-            >
-              Keyword 3
-            </button>
-            <button
-              type="button"
-              class="keyword-btn bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none"
-              data-keyword="keyword4"
-            >
-              Keyword 4
-            </button>
-            <button
-              type="button"
-              class="keyword-btn bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none"
-              data-keyword="keyword5"
-            >
-              +
-            </button>
-          </div>
-          <p>대면/비대면</p>
-          <div class="flex">
-            <select
-              id="exampleSelect"
-              class="mt-1 block w-1/3 pl-3 py-2 text-base border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
-            >
-              <option>대면</option>
-              <option>비대면</option>
-            </select>
-            <select
-              id="exampleSelect"
-              class="mt-1 block w-2/3 pl-3 pr-10 py-2 text-base border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
-            >
-              <option>서울</option>
-              <option>부산</option>
-              <option>대구</option>
-              <option>기타</option>
-            </select>
-          </div>
 
-          <p>난이도</p>
-          <div class="flex flex-wrap gap-2">
-            <button
-              type="button"
-              class="keyword-btn bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none"
-              data-keyword="keyword1"
-            >
-              상
-            </button>
-            <button
-              type="button"
-              class="keyword-btn bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none"
-              data-keyword="keyword2"
-            >
-              중상
-            </button>
-            <button
-              type="button"
-              class="keyword-btn bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none"
-              data-keyword="keyword3"
-            >
-              중
-            </button>
-            <button
-              type="button"
-              class="keyword-btn bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none"
-              data-keyword="keyword4"
-            >
-              중하
-            </button>
-            <button
-              type="button"
-              class="keyword-btn bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none"
-              data-keyword="keyword5"
-            >
-              하
-            </button>
-          </div>
-          <p>친목여부(선택사항)</p>
-          <div class="flex flex-wrap gap-2">
-            <button
-              type="button"
-              class="keyword-btn bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none"
-              data-keyword="keyword1"
-            >
-              있음
-            </button>
-            <button
-              type="button"
-              class="keyword-btn bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none"
-              data-keyword="keyword2"
-            >
-              없음
-            </button>
-            <button
-              type="button"
-              class="keyword-btn bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none"
-              data-keyword="keyword3"
-            >
-              선택안함
-            </button>
-          </div>
-          <div class="flex-grow"></div>
-          <button
-            onclick="myStudy()"
-            class="bg-blue-500 hover:bg-green-700 text-white font-bold py-2 rounded"
-          >
-            스터디 생성
-          </button>
+          <!-- Content Textarea -->
+          <textarea
+            placeholder="내용을 입력하세요"
+            name="content"
+            class="w-full p-2 border border-gray-300 rounded-md h-5/6"
+          ></textarea>
         </div>
-      </div>
+
+        <!-- Right section with buttons -->
+        <div class="flex-col space-y-4 w-1/4 ml-4">
+          <div
+            class="bg-white h-full w-auto p-2 flex flex-col space-y-4 rounded-lg"
+          >
+            <p>예상 기간</p>
+            <div class="flex">
+              <input
+                name="start_period"
+                class="mr-2 rounded-md"
+                type="date"
+              />~<input name="end_period" class="ml-2 rounded-md" type="date" />
+            </div>
+
+            <p>연락 링크</p>
+            <input
+              type="text"
+              placeholder="링크를 입력하세요"
+              name="link"
+              class="w-full p-2 mb-2 border border-gray-300 rounded-md h-10"
+            />
+
+            <div class="mb-4">
+              <p class="block text-gray-700 font-medium mb-2">관심사</p>
+              <div id="subject" class="flex flex-wrap gap-2">
+                <input
+                  type="text"
+                  id="keyword1"
+                  value="Keyword1"
+                  readonly
+                  class="w-full bg-gray-200 p-2 text-gray-700 focus:outline-none rounded-md h-10 drag-n cursor-pointer toggle"
+                />
+                <input
+                  type="text"
+                  id="keyword2"
+                  value="Keyword2"
+                  readonly
+                  class="w-full bg-gray-200 p-2 text-gray-700 focus:outline-none rounded-md h-10 drag-n cursor-pointer toggle"
+                />
+                <input
+                  type="text"
+                  name="keyword3"
+                  value="Keyword3"
+                  readonly
+                  class="w-full bg-gray-200 p-2 text-gray-700 focus:outline-none rounded-md h-10 drag-n cursor-pointer toggle"
+                />
+                <input
+                  type="text"
+                  name="keyword4"
+                  value="Keyword4"
+                  readonly
+                  class="w-full bg-gray-200 p-2 text-gray-700 focus:outline-none rounded-md h-10 drag-n cursor-pointer toggle"
+                />
+                <input
+                  type="text"
+                  name="keyword5"
+                  value="+"
+                  id="addButton"
+                  readonly
+                  class="w-full bg-gray-200 p-2 text-gray-700 focus:outline-none rounded-md h-10 drag-n cursor-pointer"
+                />
+              </div>
+            </div>
+
+            <p>대면/비대면</p>
+            <div class="flex">
+              <select
+                id="on_off"
+                class="mt-1 block w-1/3 pl-3 py-2 text-base border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+              >
+                <option value="on">대면</option>
+                <option value="off">비대면</option>
+              </select>
+              <select
+                id="location"
+                class="mt-1 block w-2/3 pl-3 pr-10 py-2 text-base border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+              >
+                <option id="on">서울</option>
+                <option id="on">부산</option>
+                <option id="on">대구</option>
+                <option id="off" style="display: none">Discord</option>
+                <option id="off" style="display: none">Zoom</option>
+                <option id="off" style="display: none">Meet</option>
+                <option>기타</option>
+              </select>
+            </div>
+
+            <p>난이도</p>
+            <div class="flex flex-wrap gap-2">
+              <div id="level" class="flex flex-wrap gap-2 toggle-group">
+                <div
+                  class="bg-gray-200 text-gray-700 px-3 py-2 rounded-lg focus:outline-none drag-n toggle"
+                  data-keyword="keyword1"
+                >
+                  상
+                </div>
+                <div
+                  class="bg-gray-200 text-gray-700 px-3 py-2 rounded-lg focus:outline-none drag-n toggle"
+                  data-keyword="keyword2"
+                >
+                  중상
+                </div>
+                <div
+                  class="bg-gray-200 text-gray-700 px-3 py-2 rounded-lg focus:outline-none drag-n toggle"
+                  data-keyword="keyword3"
+                >
+                  중
+                </div>
+                <div
+                  class="bg-gray-200 text-gray-700 px-3 py-2 rounded-lg focus:outline-none drag-n toggle"
+                  data-keyword="keyword4"
+                >
+                  중하
+                </div>
+                <div
+                  class="bg-gray-200 text-gray-700 px-3 py-2 rounded-lg focus:outline-none drag-n toggle"
+                  data-keyword="keyword5"
+                >
+                  하
+                </div>
+              </div>
+            </div>
+
+            <p>친목여부(선택사항)</p>
+            <div class="flex flex-wrap gap-2">
+              <div id="mood" class="flex flex-wrap gap-2 toggle-group">
+                <div
+                  class="bg-gray-200 text-gray-700 px-3 py-2 rounded-lg focus:outline-none drag-n toggle"
+                  data-keyword="keyword1"
+                >
+                  있음
+                </div>
+                <div
+                  class="bg-gray-200 text-gray-700 px-3 py-2 rounded-lg focus:outline-none drag-n toggle"
+                  data-keyword="keyword2"
+                >
+                  없음
+                </div>
+              </div>
+            </div>
+
+            <div class="flex-grow"></div>
+
+            <button
+              type="submit"
+              onclick="Create()"
+              class="bg-blue-500 hover:bg-green-700 text-white font-bold py-2 rounded"
+            >
+              <i class="fa-solid fa-arrows-rotate">스터디 생성</i>
+            </button>
+
+            <!-- <button type="button" onclick="Create()" class="bg-blue-500 hover:bg-green-700 text-white font-bold py-2 rounded">
+              <i class="fa-solid fa-arrows-rotate">스터디 생성 ajax</i>
+            </button> -->
+          </div>
+        </div>
+      </form>
     </main>
     <script>
       const buttons = document.querySelectorAll(".keyword-btn");

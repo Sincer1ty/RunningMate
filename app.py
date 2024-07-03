@@ -1,9 +1,11 @@
+import time as time1
 from jinja2 import Environment, FileSystemLoader
 from flask import Flask,request,jsonify
+
 from pymongo import MongoClient
 import re
 client = MongoClient('localhost', 27017)
-db = client.db
+db = client.dblearningmate
 app = Flask(__name__)
 
 # 템플릿 디렉토리를 설정합니다.
