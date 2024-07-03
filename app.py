@@ -129,7 +129,8 @@ def edit():
 @app.route('/change_profile')
 def change_profile():
     template = env.get_template('change_profile.html')
-    return template.render()
+    # id=db.userInfo.find_one()
+    return template.render(id='www.gmail.com')
 
 @app.route('/check_pw')
 def chaeck_pw():
@@ -771,15 +772,16 @@ jwt = JWTManager(app)
 
 @app.route('/jwt', methods=['POST'])
 def jmt():
-
-   dummy={"id" : "1234@1234.com", "pw": "1234"}
-
    user_id = request.form['email']
    user_pw = request.form['password']
 
-   if user_id == dummy["id"] and user_pw == dummy['pw']:
-      access_token = create_access_token(identity = user_id,
+   result = db.userInfo.find_one({"id":user_id},{'_id':0})
+
+   print(result)
+   if user_pw==result['pw']:
+       access_token = create_access_token(identity = user_id,
 											expires_delta = False)
+
    else:
       return jsonify(
 			result = "Invalid Params!"
