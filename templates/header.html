@@ -1,0 +1,46 @@
+<header class="bg-white shadow sticky top-0">
+  <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+    <!-- Web Title -->
+    <h1 class="text-2xl font-bold text-gray-800">러닝메이트</h1>
+
+    <!-- Right section with Logout button and Profile picture -->
+    <div class="flex items-center space-x-4">
+      <button
+        class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+      >
+        Logout
+      </button>
+      <img
+        src="https://via.placeholder.com/40"
+        alt="Profile Picture"
+        class="relative w-10 h-10 rounded-full cursor-pointer"
+        onclick="toggleProfileDropdown()"
+      />
+    </div>
+  </div>
+  <div
+    id="profileDropdown"
+    class="absolute w-48 bg-white border border-gray-200 rounded-lg shadow-lg"
+    style="right: 17%"
+  >
+    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+      >개인정보 수정</a
+    >
+    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+      >만든 스터디</a
+    >
+  </div>
+</header>
+
+<script>
+  function toggleProfileDropdown() {
+    const dropdown = document.getElementById("profileDropdown");
+    if (dropdown.style.display === "block") {
+      dropdown.style.display = "none";
+    } else {
+      dropdown.style.display = "block";
+    }
+  }
+
+  // Close the dropdown if the user clicks outside of it
+</script>

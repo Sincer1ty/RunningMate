@@ -3,44 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Survey Form</title>
+    <title>매칭설문창</title>
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body class="bg-white">
-    <header class="bg-white shadow">
-      <div
-        class="container mx-auto px-4 py-4 flex justify-between items-center"
-      >
-        <!-- Web Title -->
-        <h1 class="text-2xl font-bold text-gray-800">러닝메이트</h1>
-
-        <!-- Right section with Logout button and Profile picture -->
-        <div class="flex items-center space-x-4">
-          <button
-            class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-          >
-            Logout
-          </button>
-          <img
-            src="https://via.placeholder.com/40"
-            alt="Profile Picture"
-            class="relative w-10 h-10 rounded-full cursor-pointer"
-            onclick="toggleProfileDropdown()"
-          />
-        </div>
+    {% include 'header.html'%}
+    <div class="flex-col container h-full mx-auto p-16">
+      <div id="progress-text" class="text-center mb-4">1/4</div>
+      <div class="w-full bg-gray-200 rounded-full h-5 mb-4">
+        <div
+          id="progress-bar"
+          class="bg-blue-600 h-5 rounded-full"
+          style="width: 25%"
+        ></div>
       </div>
-    </header>
-    <div class="flex justify-center items-center min-h-screen">
-      <div class="bg-purple-500 mx-auto p-4">
-        <div id="progress-text" class="text-center text-white mb-4">1/4</div>
-        <div class="w-full bg-gray-200 rounded-full h-2.5 mb-4">
-          <div
-            id="progress-bar"
-            class="bg-purple-600 h-2.5 rounded-full"
-            style="width: 25%"
-          ></div>
-        </div>
-
+    </div>
+    <div class="bg-blue-500 p-8 pb-96">
+      <div class="flex-col container justify-center items-center mx-auto">
         <div id="form-1" class="bg-white p-6 rounded-lg shadow-lg mb-6">
           <h2 class="text-xl font-bold mb-4">Basic dialog title</h2>
           <p class="mb-4">
@@ -48,74 +27,74 @@
             content to provide critical information, or prompt for a decision to
             be made.
           </p>
-          <button class="bg-purple-600 text-white py-2 px-4 rounded mb-2">
+          <button class="bg-blue-600 text-white py-2 px-4 rounded mb-2">
             Action 1
           </button>
-          <button class="bg-purple-600 text-white py-2 px-4 rounded">
+          <button class="bg-blue-600 text-white py-2 px-4 rounded">
             Action 2
           </button>
         </div>
 
         <div id="form-2" class="bg-white p-6 rounded-lg shadow-lg mb-6 hidden">
-          <h2 class="text-xl font-bold mb-4">Basic dialog title</h2>
+          <h2 class="text-xl font-bold mb-4">질문2</h2>
           <p class="mb-4">
             A dialog is a type of modal window that appears in front of app
             content to provide critical information, or prompt for a decision to
             be made.
           </p>
-          <button class="bg-purple-600 text-white py-2 px-4 rounded mb-2">
+          <button class="bg-blue-600 text-white py-2 px-4 rounded mb-2">
             Action 1
           </button>
-          <button class="bg-purple-600 text-white py-2 px-4 rounded">
+          <button class="bg-blue-600 text-white py-2 px-4 rounded">
             Action 2
           </button>
         </div>
         <div id="form-3" class="bg-white p-6 rounded-lg shadow-lg mb-6 hidden">
-          <h2 class="text-xl font-bold mb-4">Basic dialog title</h2>
+          <h2 class="text-xl font-bold mb-4">질문3</h2>
           <p class="mb-4">
             A dialog is a type of modal window that appears in front of app
             content to provide critical information, or prompt for a decision to
             be made.
           </p>
-          <button class="bg-purple-600 text-white py-2 px-4 rounded mb-2">
+          <button class="bg-blue-600 text-white py-2 px-4 rounded mb-2">
             Action 1
           </button>
-          <button class="bg-purple-600 text-white py-2 px-4 rounded">
+          <button class="bg-blue-600 text-white py-2 px-4 rounded">
             Action 2
           </button>
         </div>
         <div id="form-4" class="bg-white p-6 rounded-lg shadow-lg mb-6 hidden">
-          <h2 class="text-xl font-bold mb-4">Basic dialog title</h2>
+          <h2 class="text-xl font-bold mb-4">질문4</h2>
           <p class="mb-4">
             A dialog is a type of modal window that appears in front of app
             content to provide critical information, or prompt for a decision to
             be made.
           </p>
-          <button class="bg-purple-600 text-white py-2 px-4 rounded mb-2">
+          <button class="bg-blue-600 text-white py-2 px-4 rounded mb-2">
             Action 1
           </button>
-          <button class="bg-purple-600 text-white py-2 px-4 rounded">
+          <button class="bg-blue-600 text-white py-2 px-4 rounded">
             Action 2
           </button>
         </div>
-        <div class="flex justify-between">
-          <button
-            id="prev-btn"
-            class="bg-purple-600 text-white py-2 px-4 rounded"
-            onclick="prevStep()"
-            disabled
-          >
-            Previous
-          </button>
-          <button
-            id="next-btn"
-            class="bg-purple-600 text-white py-2 px-4 rounded"
-            onclick="nextStep()"
-          >
-            Next
-          </button>
-        </div>
       </div>
+    </div>
+    <div class="flex container justify-between mx-auto pt-8">
+      <button
+        id="prev-btn"
+        class="bg-blue-600 text-white py-2 px-4 rounded"
+        onclick="prevStep()"
+        disabled
+      >
+        Previous
+      </button>
+      <button
+        id="next-btn"
+        class="bg-blue-600 text-white py-2 px-4 rounded"
+        onclick="nextStep()"
+      >
+        Next
+      </button>
     </div>
     <script>
       let currentStep = 1;
