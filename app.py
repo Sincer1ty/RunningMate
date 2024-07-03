@@ -48,46 +48,57 @@ def make():
 @app.route('/make', methods = ['POST'])
 def make_groups():
     #  1. 클라이언트로부터 데이터를 받기
-	mode = request.form['mode']
+    mode = request.form['mode']
     
-	print(mode)
-      
-	group={}
-	group2={}
-
-	if mode =='ajax':
-		subject1 = request.form['keyword1']
-		subject2 = request.form['keyword2']
-		subject3 = request.form['keyword3']
+    print(mode)
     
-		subject = [subject1, subject2, subject3]
+    group={}
+    group2={}
+    
+    if mode =='ajax':
+        subject1 = request.form['keyword1']
+        subject2 = request.form['keyword2']
+        subject3 = request.form['keyword3']
         
-		on_off = request.form['on_off_give']
-		location = request.form['location_give']
-		level = request.form['level']
-		mood = request.form['mood']
+        subject = [subject1, subject2, subject3]
+        
+        week1 = request.form['week1']
+        week2 = request.form['week2']
+        week3 = request.form['week3']
+        # week4 = request.form['week4']
+        # week5 = request.form['week5']
+        # week6 = request.form['week6']
+        # week7 = request.form['week7']
+        
+        week = [week1, week2, week3]
+        
+        on_off = request.form['on_off_give']
+        location = request.form['location_give']
+        level = request.form['level']
+        mood = request.form['mood']
 
-		group = {
+        group = {
             'subject' : subject,
             'time' : time,
             'on_off':on_off,
             'loc': location,
             'level': level,
-            'mood': mood
+            'mood': mood,
+            'week': week
 		}
-		print("group : ", group)
-		db.groups.insert_one(group)
-		print(time)
-            
-	else:
-		name = request.form['topic']
-		content = request.form['content']
-		start_period = request.form['start_period']
-		link = request.form['link']
+        print("group : ", group)
+        db.groups.insert_one(group)
+        print(time)
+
+    else:
+        name = request.form['topic']
+        content = request.form['content']
+        start_period = request.form['start_period']
+        link = request.form['link']
    
-		end_period = request.form['end_period']
+        end_period = request.form['end_period']
             
-		group2 = {
+        group2 = {
         	'name' : name,
         	'start_period' : start_period,
         	'content' : content,
@@ -97,13 +108,13 @@ def make_groups():
 		}
 
 
-		print("group : ", group)
-		latest_document = db.groups.find_one(sort=[("_id", -1)])
-		filter_query = {"_id": latest_document["_id"]}
+        print("group : ", group)
+        latest_document = db.groups.find_one(sort=[("_id", -1)])
+        filter_query = {"_id": latest_document["_id"]}
 
-		db.groups.update_one(filter_query,{"$set" : group2})
+        db.groups.update_one(filter_query,{"$set" : group2})
 	
-	return env.get_template('MyStudy.html').render()
+    return jsonify({'result':'success', 'msg': '이 요청은 GET!'})
 
 @app.route('/MyStudy')
 def MyStudy():
