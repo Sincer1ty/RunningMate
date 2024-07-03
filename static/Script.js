@@ -1,28 +1,32 @@
 // 헤더 공통부분 
 
-function profile() {
+function profile(){
     alert('정보수정으로 가기');
 }
 
-function Title() {
-    alert('메인으로 가기');
+function myStudy() {
+    window.location.href = "/MyStudy";
+  }
+
+function main(){
+    window.location.href = "/";
 }
 
-function LogOut() {
-    confirm('로그아웃하시겠습니까?');
+function login(){
+    window.location.href = "/login";
 }
 
 // 내가만든 스터디그룹
 
-function CardTitle() {
+function CardTitle(){
     alert('스터디그룹 상세내용 모달창');
 }
 
 function Correction() {
-    alert('수정페이지로 이동');
+    window.location.href = '/edit';
 }
 
-function Delete() {
+function Delete(){
     confirm('삭제하시겠습니까?');
 }
 
@@ -62,55 +66,113 @@ function Create() {
 
 // 로그인
 
-function Login() {
+function Login(){
     alert('로그인 아이디 비밀번호');
 }
 
-function Join() {
+function Join(){
     alert('회원가입페이지');
 }
 
-function FindPass() {
+function FindPass(){
     alert('비밀번호 찾기');
 }
 
+function changePw() { 
+    window.location.href = '/change_pw';
+}
 // 회원가입
 
 function JoinConf() {
+    
     alert('회원가입 완료');
+
 }
 
+
+function matching() {
+    window.location.href = "/matching";
+
+}
+
+function create() {
+    window.location.href = "/create";
+}
+  
 function IdCheck() {
-    alert('아이디중복확인');
-}
+    let currentID = $('#email').val();
 
-function NickCheck() {
-    alert('닉네임중복확인');
-}
-
-function Interest() {
-    alert('흥미체크중복확인');
-}
-
-$(document).ready(function () {
-    //on-off
-    OnOffSelect = document.querySelector('#on_off')
-    LocationSelect = document.querySelector('#location')
-
-    OnOffSelect.addEventListener('change', (event) => {
-        console.log('on-off');
-        if (event.target.value == "off") {
-            $('#location > #on').css('display', 'none');
-            $('#location > #off').css('display', 'block');
-            LocationSelect.value = $('#location > #off')[0].text;
-        }
-        else {
-            $('#location > #on').css('display', 'block');
-            $('#location > #off').css('display', 'none');
-            LocationSelect.value = $('#location > #on')[0].text;
+    $.ajax({
+        type: "POST",
+        url: "/idCheck",
+        data: { currentID : currentID },
+        success: function(response){
+            console.log(response)
+            alert(response);
+            // 리스폰스만 얼럿이 뜨는 이유가 뭘까?
         }
     })
 
+
+    
+    // alert(currentID);
+  
+   
+}
+
+function NickCheck() {
+    let currentNickname = $('#nickname').val();
+    $.ajax({
+        type: "POST",
+        url: "/nickCheck",
+        data: { currentNickname : currentNickname },
+        success: function(response){
+            console.log(response)
+            alert(response);
+            // 리스폰스만 얼럿이 뜨는 이유가 뭘까?
+        }
+    })
+}
+
+function Interest(){
+    alert('흥미체크중복확인');
+}
+
+
+
+$(document).ready(function () {
+  
+    
+
+    //대면인지 비대면인지에 따라 지역 또는 플랫폼을 고르는 form으로 변경
+    document.getElementById("on-off").addEventListener("change", function() {
+        const selectedIndex = this.selectedIndex;
+        if (selectedIndex === 1) {
+            $('#online').addClass('hidden');
+            $('#offline').removeClass('hidden');
+        }
+        else { 
+            $('#offline').addClass('hidden');
+            $('#online').removeClass('hidden');
+        }
+    });
+    $('.radio').click(function() {
+        // 이전에 선택된 div가 있으면 클래스 제거 및 배경색 복원
+        const selectedDiv = $('.selected');
+        if (selectedDiv.length && selectedDiv[0] !== this) {
+            selectedDiv.removeClass('selected').removeClass('bg-blue-500').addClass('bg-gray-200');
+        }
+
+        // 현재 클릭된 div에 selected 클래스 추가 및 배경색 변경
+        $(this).addClass('selected').removeClass('bg-gray-200').addClass('bg-blue-500');
+        if (this.id === 'offlineBtn') {
+            $('#offlineform').removeClass('hidden');
+            $('#onlineform').addClass('hidden');
+        } else if (this.id === 'onlineBtn') {
+            $('#onlineform').removeClass('hidden');
+            $('#offlineform').addClass('hidden');
+        }
+    });
     $('.toggle').click(function () {
 
 
@@ -149,13 +211,13 @@ $(document).ready(function () {
             inputBox.remove();
         } else {
             const newInputBox = $('<input type="text" class="new-input bg-gray-200 text-gray-700 px-3 py-2 rounded-lg focus:outline-none" placeholder="New Keyword" />');
-            newInputBox.on('keypress', function (event) {
+            newInputBox.on('keypress', function(event) {
                 if (event.which == 13) { // Enter key pressed
                     const keyword = $(this).val();
                     if (keyword.trim() !== '') {
                         const newElement = $(`<input type="text" name="keyword1" value="${keyword}" readonly
-                class="w-full bg-gray-200 p-2 text-gray-700 hover:bg-gray-300 focus:outline-none rounded-md h-10 drag-n cursor-pointer toggle" />`);
-                        newElement.click(function () {
+                            class="w-full bg-gray-200 p-2 text-gray-700 hover:bg-gray-300 focus:outline-none rounded-md h-10 drag-n cursor-pointer toggle" />`);
+                        newElement.click(function() {
                             $(this).toggleClass('selected');
                             if ($(this).hasClass('selected')) {
                                 $(this).css('background-color', '#4caf50');
