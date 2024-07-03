@@ -727,7 +727,7 @@ def mail():
    # 메일 본문 내용
    content = "안녕하세요. \n\n\
    링크를 전달드립니다.\n\n\
-   www.naver.com\n\n\
+   http://192.168.1.131:5000/change \n\n\
    감사합니다\n\n\
    "
    content_part = MIMEText(content, "plain")
@@ -756,6 +756,11 @@ app.config.update(
 			JWT_SECRET_KEY = "I'M IML"
 		)
 jwt = JWTManager(app)
+
+@app.route('/change')
+def change():
+    template = env.get_template('change_pw.html')
+    return template.render()
 
 @app.route('/jwt', methods=['POST'])
 def jmt():
