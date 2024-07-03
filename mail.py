@@ -24,7 +24,7 @@ smtp.login(my_account, my_password)
  
 # 메일을 받을 계정
 to_mail = "dlstjd222@gmail.com"
- 
+
 # 메일 기본 정보 설정
 msg = MIMEMultipart()
 msg["Subject"] = f"러닝메이트 인증 메일입니다."  # 메일 제목
