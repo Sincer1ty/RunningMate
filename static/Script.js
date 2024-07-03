@@ -9,11 +9,11 @@ function myStudy() {
   }
 
 function main(){
-    window.location.href = "/";
+    window.location.href = "/main";
 }
 
 function login(){
-    window.location.href = "/login";
+    window.location.href = "/";
 }
 
 // 내가만든 스터디그룹
@@ -56,11 +56,11 @@ function Create() {
             mode: 'ajax', on_off_give: on_off, location_give: loc,
             level: level, mood: mood
         },
-        success: function (response) { // 성공하면
-            if (response['result'] == 'success') {
-                alert(response['msg']);
-            }
-        }
+        // success: function (response) { // 성공하면
+        //     if (response['result'] == 'success') {
+        //         alert(response['msg']);
+        //     }
+        // }
     })
 }
 
@@ -96,7 +96,7 @@ function matching() {
 }
 
 function create() {
-    window.location.href = "/create";
+    window.location.href = "/make";
 }
   
 function IdCheck() {
@@ -142,10 +142,10 @@ function Interest(){
 
 $(document).ready(function () {
   
-    
-
-    //대면인지 비대면인지에 따라 지역 또는 플랫폼을 고르는 form으로 변경
-    document.getElementById("on-off").addEventListener("change", function() {
+    OnOffSelect = document.querySelector('#on_off')
+    if (OnOffSelect!=null) {
+        //대면인지 비대면인지에 따라 지역 또는 플랫폼을 고르는 form으로 변경
+        OnOffSelect.addEventListener("change", function() {
         const selectedIndex = this.selectedIndex;
         if (selectedIndex === 1) {
             $('#online').addClass('hidden');
@@ -156,6 +156,8 @@ $(document).ready(function () {
             $('#online').removeClass('hidden');
         }
     });
+    }
+    
     $('.radio').click(function() {
         // 이전에 선택된 div가 있으면 클래스 제거 및 배경색 복원
         const selectedDiv = $('.selected');

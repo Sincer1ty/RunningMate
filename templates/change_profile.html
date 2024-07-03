@@ -4,15 +4,29 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Change Profile</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- jQuery 를 포함합니다. -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="static/Script.js"></script>
   </head>
 
   <style>
+    .selected {
+      background-color: #4caf50;
+      /* 선택되었을 때의 배경색 */
+      color: white;
+      /* 선택되었을 때의 글자색 */
+    }
+
     .margin-r {
       margin-right: 2rem;
     }
   </style>
-  <script src="/static/Script.js"></script>
+
   <body>
     {% include 'header.html'%}
     <div class="container mx-auto mt-8 px-4">
@@ -61,49 +75,53 @@
               class="flex-grow px-3 py-2 border border-gray-300 rounded-l-lg focus:outline-none focus:border-blue-500"
             />
             <button
+              onclick="NickCheck()"
               type="button"
               class="bg-blue-500 text-white px-4 py-2 rounded-r-lg hover:bg-blue-600 focus:outline-none"
             >
               Check
             </button>
           </div>
-          <label class="block text-gray-700 font-medium mb-2">관심사</label>
-          <div class="flex flex-wrap gap-2">
-            <button
-              type="button"
-              class="keyword-btn bg-blue-500 text-white px-3 py-2 rounded-lg focus:outline-none"
-              data-keyword="keyword1"
-            >
-              Keyword 1
-            </button>
-            <button
-              type="button"
-              class="keyword-btn bg-blue-500 text-white px-3 py-2 rounded-lg focus:outline-none"
-              data-keyword="keyword2"
-            >
-              Keyword 2
-            </button>
-            <button
-              type="button"
-              class="keyword-btn bg-blue-500 text-white px-3 py-2 rounded-lg focus:outline-none"
-              data-keyword="keyword3"
-            >
-              Keyword 3
-            </button>
-            <button
-              type="button"
-              class="keyword-btn bg-blue-500 text-white px-3 py-2 rounded-lg focus:outline-none"
-              data-keyword="keyword4"
-            >
-              Keyword 4
-            </button>
-            <button
-              type="button"
-              class="keyword-btn bg-blue-500 text-white px-3 py-2 rounded-lg focus:outline-none"
-              data-keyword="keyword5"
-            >
-              +
-            </button>
+          <div class="mb-4">
+            <p class="block text-gray-700 font-medium mb-2">관심사</p>
+            <div id="subject" class="flex flex-wrap gap-2">
+              <input
+                type="text"
+                id="keyword1"
+                value="Keyword1"
+                readonly
+                class="w-full bg-gray-200 p-2 text-gray-700 focus:outline-none rounded-md h-10 drag-n cursor-pointer toggle"
+              />
+              <input
+                type="text"
+                id="keyword2"
+                value="Keyword2"
+                readonly
+                class="w-full bg-gray-200 p-2 text-gray-700 focus:outline-none rounded-md h-10 drag-n cursor-pointer toggle"
+              />
+              <input
+                type="text"
+                name="keyword3"
+                value="Keyword3"
+                readonly
+                class="w-full bg-gray-200 p-2 text-gray-700 focus:outline-none rounded-md h-10 drag-n cursor-pointer toggle"
+              />
+              <input
+                type="text"
+                name="keyword4"
+                value="Keyword4"
+                readonly
+                class="w-full bg-gray-200 p-2 text-gray-700 focus:outline-none rounded-md h-10 drag-n cursor-pointer toggle"
+              />
+              <input
+                type="text"
+                name="keyword5"
+                value="+"
+                id="addButton"
+                readonly
+                class="w-full bg-gray-200 p-2 text-gray-700 focus:outline-none rounded-md h-10 drag-n cursor-pointer"
+              />
+            </div>
           </div>
         </div>
 
@@ -122,21 +140,12 @@
             >비밀번호 변경</a
           >
           <a
-            href="https://example.com/second-link"
+            href="http://192.168.1.131:5000/"
             class="text-blue-500 hover:underline"
             >회원 탈퇴</a
           >
         </div>
       </div>
-
-      <!-- <div class="flex justify-between mt-4 px-4">
-            <a href="https://example.com/settings" class="text-blue-500 hover:underline mr-auto ml-4">Account Settings</a>
-            <a href="https://example.com/delete-account" class="text-red-500 hover:underline mr-4 ml-auto">Delete Account</a>
-        </div> -->
-
-      <!-- <div class="margin-t">
-            
-        </div> -->
     </div>
   </body>
 </html>

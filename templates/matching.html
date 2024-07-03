@@ -89,12 +89,14 @@
           </p>
           <div class="flex flex-wrap gap-2">
             {% for day in week %}
-            <div
-              id="subject"
-              class="bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none drag-n toggle"
-            >
-              {{day}}
-            </div>
+            <input
+              type="text"
+              id="keyword1"
+              value="{{day}}"
+              readonly
+              class="w-full bg-gray-200 p-2 text-gray-700 focus:outline-none rounded-md h-10 drag-n cursor-pointer toggle"
+            />
+
             {% endfor %}
           </div>
         </div>
@@ -109,11 +111,12 @@
           <div class="flex flex-wrap gap-2">
             {% for level in levels %}
             <div
-              id="subject"
-              class="bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none drag-n toggle"
+              class="bg-gray-200 text-gray-700 px-3 py-2 rounded-lg focus:outline-none drag-n toggle"
+              data-keyword="keyword1"
             >
               {{level}}
             </div>
+
             {% endfor %}
           </div>
         </div>
@@ -128,8 +131,8 @@
           <div class="flex flex-wrap gap-2">
             {% for mood in moods %}
             <div
-              id="subject"
-              class="bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none drag-n toggle"
+              class="bg-gray-200 text-gray-700 px-3 py-2 rounded-lg focus:outline-none drag-n toggle"
+              data-keyword="keyword1"
             >
               {{mood}}
             </div>
@@ -168,7 +171,7 @@
 
       function nextStep() {
         let checked = false;
-        const selectedToggles = $("div.selected");
+        const selectedToggles = $("input.selected");
         if (selectedToggles.length === 0) {
           alert("질문에 대한 답을 골라주세요.");
           return;
