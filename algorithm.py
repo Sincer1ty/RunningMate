@@ -155,6 +155,8 @@ StudyData5 = {
     "time": "2024.07.03 12:00:00"
 }
 
+from datetime import datetime
+
 UserDB = [UserData0, UserData1, UserData2, UserData3, UserData4, UserData5]
 StudyDB = [StudyData0, StudyData1, StudyData2, StudyData3, StudyData4, StudyData5]
 
@@ -168,60 +170,55 @@ def subjectMatcher(List, Subject):
         if i["subject"] == Subject:
             ans.append(i)
     
-    if ans != False:
+    if ans:
         return ans
     else:
         print("과목 매칭 실패!")
         return False
 
-# 대면/비대면탐색
-def on_offMatcher(List, Subject):
+# 시간순 정렬 함수
+def sort_by_time(study_list, time_key):
+    return sorted(study_list, key=lambda x: datetime.strptime(x[time_key], '%Y.%m.%d %H:%M:%S'))
+
+# 통합 함수
+def Matcher(List, Userdata):
     ans = []
+    on_off = []
+    location = []
+    week = []
     for i in List:
-        if i["on_off"] == Subject:
-            ans.append(i)
+        if i["on_off"] == Userdata["on_off"]:
+            on_off.append(i)
+            
+        elif i["location"] == Userdata["location"]:
+            location.append(i)
+
+        # if i["week"] == Userdata["week"]:
+        #     week.append(i)
     
-    if ans != False:
-        return ans
-    else:
-        print("대면/비대면 매칭 실패!")
-        return False
-    
-# 장소탐색
-def locationMatcher(List, Subject):
-    ans = []
-    for i in List:
-        if i["location"] == Subject:
-            ans.append(i)
-    
-    if ans != False:
-        return ans
-    else:
-        print("장소 매칭 실패!")
-        return False
-    
-# 시간탐색
-def weekMatcher(List, Subject):
-    ans = []
-    for i in List:
-        if i["week"] == Subject:
-            ans.append(i)
-    
-    if ans != False:
-        return ans
-    else:
-        print("장소 매칭 실패!")
-        return False
+    on_off = sort_by_time(on_off, 'time')
+    location = sort_by_time(location, 'time')
+
+    ans.append(on_off)
+    ans.append(location)
+
+    return ans
+
 
 UserSubject = UserData0["subject"] # 유저데이터로 탐색
 
 
 temp = subjectMatcher(StudyDB, UserSubject)
 
-on_off = on_offMatcher(temp, UserData0["on_off"])
-location = locationMatcher(temp, UserData0["location"])
+ans = Matcher(temp, UserData0)
+
+print(ans)
+
+
+
+# on_off = on_offMatcher(temp, UserData0["on_off"])
+# location = locationMatcher(temp, UserData0["location"])
 # week = weekMatcher(temp, UserData0["week"])
 
-print(location)
 
 
