@@ -5,7 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>매칭설문창</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   </head>
+  <style>
+    .selected {
+      background-color: #4caf50;
+      /* 선택되었을 때의 배경색 */
+      color: white;
+      /* 선택되었을 때의 글자색 */
+    }
+  </style>
+  <script src="Script.js"></script>
   <body class="bg-white">
     {% include 'header.html'%}
     <div class="flex-col container h-full mx-auto p-16">
@@ -21,18 +31,44 @@
     <div class="bg-blue-500 p-8 pb-96">
       <div class="flex-col container justify-center items-center mx-auto">
         <div id="form-1" class="bg-white p-6 rounded-lg shadow-lg mb-6">
-          <h2 class="text-xl font-bold mb-4">Basic dialog title</h2>
+          <h2 class="text-xl font-bold mb-4">
+            1.참여하고싶은 스터디 주제를 선택해주세요.
+          </h2>
           <p class="mb-4">
-            A dialog is a type of modal window that appears in front of app
-            content to provide critical information, or prompt for a decision to
-            be made.
+            없다면 + 버튼으로 추가할 수 있어요. 최대 3개까지 선택 가능합니다.
           </p>
-          <button class="bg-blue-600 text-white py-2 px-4 rounded mb-2">
-            Action 1
-          </button>
-          <button class="bg-blue-600 text-white py-2 px-4 rounded">
-            Action 2
-          </button>
+          <div class="flex flex-wrap gap-2">
+            <div
+              id="subject"
+              class="bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none drag-n toggle"
+            >
+              Keyword 1
+            </div>
+            <div
+              id="subject"
+              class="bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none drag-n toggle"
+            >
+              Keyword 2
+            </div>
+            <div
+              id="subject"
+              class="bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none drag-n toggle"
+            >
+              Keyword 3
+            </div>
+            <div
+              id="subject"
+              class="bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none drag-n toggle"
+            >
+              Keyword 4
+            </div>
+            <div
+              id="addButton"
+              class="bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 focus:outline-none drag-n"
+            >
+              +
+            </div>
+          </div>
         </div>
 
         <div id="form-2" class="bg-white p-6 rounded-lg shadow-lg mb-6 hidden">
