@@ -180,7 +180,11 @@
                 <div >
                     2024-0722~2024-08-22
                 </div>
-
+                <p>시간</p>
+                <div >
+                    월,금
+                </div>
+                
                 <p>연락 링크</p>
                 <div >
                     https://open.kakao.com/learningMate
@@ -211,7 +215,7 @@
     </div>
       
     </main>
-  <button class="flex mx-auto bg-blue-500 hover:bg-blue-700 text-white py-4 px-8 rounded-lg text-lg">확인</button>
+  <button onclick="mainPage()"class="flex mx-auto bg-blue-500 hover:bg-blue-700 text-white py-4 px-8 rounded-lg text-lg">확인</button>
     <script>
         function toggleButton(button) {
             const buttons = document.querySelectorAll('.toggle-button');
@@ -228,6 +232,9 @@
 
         function closeModal() {
             document.getElementById('modal').style.display = 'none';
+        }
+        function mainPage(){
+            window.location.href = "/";
         }
     </script>
 </body>

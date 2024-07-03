@@ -1,11 +1,14 @@
 <header class="bg-white shadow sticky top-0">
   <div class="container mx-auto px-4 py-4 flex justify-between items-center">
     <!-- Web Title -->
-    <h1 class="text-2xl font-bold text-gray-800">러닝메이트</h1>
+    <h1 onclick="main()" class="text-2xl font-bold text-gray-800 pointer">
+      러닝메이트
+    </h1>
 
     <!-- Right section with Logout button and Profile picture -->
     <div class="flex items-center space-x-4">
       <button
+        onclick="login()"
         class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
       >
         Logout
@@ -20,13 +23,15 @@
   </div>
   <div
     id="profileDropdown"
-    class="absolute w-48 bg-white border border-gray-200 rounded-lg shadow-lg"
+    class="absolute w-48 bg-white border border-gray-200 rounded-lg shadow-lg hidden"
     style="right: 17%"
   >
-    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+    <a
+      href="/change_profile"
+      class="block px-4 py-2 text-gray-700 hover:bg-gray-100"
       >개인정보 수정</a
     >
-    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+    <a href="/MyStudy" class="block px-4 py-2 text-gray-700 hover:bg-gray-100"
       >만든 스터디</a
     >
   </div>

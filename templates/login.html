@@ -1,42 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
     <script src="https://cdn.tailwindcss.com"></script>
-</head>
+  </head>
 
-<style>
+  <style></style>
 
-</style>
-
-<body class="bg-gray-100 flex items-center justify-center h-screen">
+  <body class="bg-gray-100 flex items-center justify-center h-screen">
     <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-sm">
-        <div class="flex justify-center mb-6">
-            <img src="your-logo-url.png" alt="Logo" class="h-16 w-16">
+      <div class="flex justify-center mb-6">
+        <img src="your-logo-url.png" alt="Logo" class="h-16 w-16" />
+      </div>
+      <form action="/submit" method="POST">
+        <div class="mb-4">
+          <label for="email" class="block text-gray-700 font-medium mb-2"
+            >ID</label
+          >
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+          />
         </div>
-        <form action="/submit" method="POST">
-            <div class="mb-4">
-                <label for="email" class="block text-gray-700 font-medium mb-2">ID</label>
-                <input type="email" id="email" name="email" required
-                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
-            </div>
-            <div class="mb-4">
-                <label for="password" class="block text-gray-700 font-medium mb-2">PW</label>
-                <input type="password" id="password" name="password" required
-                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
-            </div>
-            <button type="submit"
-                    class="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 focus:outline-none">
-                로그인
-            </button>
-
-        </form>
-        <div class="mt-6 flex justify-between">
-            <a href="sign_up.html" class="text-blue-500 hover:underline">회원가입</a>
-            <a href="find_pw.html" class="text-blue-500 hover:underline">비밀번호 찾기</a>
+        <div class="mb-4">
+          <label for="password" class="block text-gray-700 font-medium mb-2"
+            >PW</label
+          >
+          <input
+            type="password"
+            id="password"
+            name="password"
+            required
+            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+          />
         </div>
+        <button
+          type="submit"
+          class="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 focus:outline-none"
+        >
+          로그인
+        </button>
+      </form>
+      <div class="mt-6 flex justify-between">
+        <a href="sign_up" class="text-blue-500 hover:underline">회원가입</a>
+        <a href="find_pw" class="text-blue-500 hover:underline"
+          >비밀번호 찾기</a
+        >
+      </div>
     </div>
-</body>
+  </body>
 </html>

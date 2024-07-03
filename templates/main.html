@@ -276,11 +276,11 @@
         <!-- Right section with buttons -->
         <div class="flex flex-col space-y-4 w-1/4 ml-4">
             <div class="bg-white space-y-4 w-auto p-2 flex flex-col space-y-4 rounded-lg">
-                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                <button onclick="create()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                     +스터디 생성
                 </button>
-                <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
-                    <i class="fa-solid fa-arrows-rotate">스터디매칭</i>
+                <button onclick="matching()" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                    스터디매칭
                 </button>
             </div>
         </div>
@@ -303,7 +303,9 @@
         function closeModal() {
             document.getElementById('modal').style.display = 'none';
         }
+      
     </script>
+    <script src="/static/Script.js"></script>
 </body>
 
 </html>

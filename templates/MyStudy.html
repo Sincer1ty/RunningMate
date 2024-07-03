@@ -37,35 +37,11 @@
        padding: 0;
    }
    </style>
-   <script src="Script.js"></script>
+   <script src="/static/Script.js"></script>
   <title>Document</title>
 </head>
 <body>
-  <header class="bg-white shadow">
-    <div
-      class="container mx-auto px-4 py-4 flex justify-between items-center"
-    >
-      <!-- Web Title -->
-      <h1 class="text-2xl font-bold text-gray-800">러닝메이트</h1>
-
-      <!-- Right section with Logout button and Profile picture -->
-      <div class="flex items-center space-x-4">
-        <button
-          class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-        >
-          Logout
-        </button>
-        <img
-          src="https://via.placeholder.com/40"
-          alt="Profile Picture"
-          class="relative w-10 h-10 rounded-full cursor-pointer"
-          onclick="toggleProfileDropdown()"
-        />
-      </div>
-    </div>
-  </header>
-
-
+  {% include 'header.html'%}
   <div class="div">
     <div class="flex container mx-auto">
       <h1 class="text-5xl p-8">내가 만든 스터디에요!</h1>
