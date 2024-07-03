@@ -570,9 +570,15 @@ StudyData16 = {
 }
 
 
-UserDB = [UserData0]
-StudyDB = [StudyData0, StudyData1, StudyData2, StudyData3, StudyData4, StudyData5, StudyData6, StudyData7, StudyData8, StudyData9, StudyData10, StudyData11, StudyData12, StudyData13, StudyData14, StudyData15, StudyData16, StudyData17, StudyData18, StudyData19, StudyData20]
-
+UserDB = [UserData0] # 로그인 데이터 위치!!!
+groups_collection = db.groups
+groups = groups_collection.find()
+StudyDB = []
+for group in groups:
+    StudyDB.append(group)
+    
+# StudyDB = [StudyData0, StudyData1, StudyData2, StudyData3, StudyData4, StudyData5, StudyData6, StudyData7, StudyData8, StudyData9, StudyData10, StudyData11, StudyData12, StudyData13, StudyData14, StudyData15, StudyData16, StudyData17, StudyData18, StudyData19, StudyData20]
+print(StudyDB)
 def subjectMatcher(List, Subject): 
     ans = []
     for i in List:
@@ -691,17 +697,21 @@ def main():
 
    # 템플릿 파일을 로드합니다.
 
-   template = env.get_template('main.html')
+    template = env.get_template('main.html')
 
    # 템플릿에 전달할 데이터를 정의합니다.
 
-   UserSubject = UserData0["subject"] # 유저데이터로 탐색
+    UserSubject = UserData0["subject"] # 유저데이터로 탐색
 
-   temp = subjectMatcher(StudyDB, UserSubject)
+    temp = subjectMatcher(StudyDB, UserSubject)
 
-   ans = Matcher(temp, UserData0)
+   
+    if not temp:
+       Matcher(StudyDB, UserData0)
+    else:
+       ans = Matcher(temp, UserData0)
 
-   return template.render(ans)
+    return template.render(ans)
 
 
 # ============================================================
@@ -750,7 +760,7 @@ def mail():
    # 메일 본문 내용
    content = "안녕하세요. \n\n\
    링크를 전달드립니다.\n\n\
-   www.naver.com\n\n\
+   http://192.168.1.131:5000/change \n\n\
    감사합니다\n\n\
    "
    content_part = MIMEText(content, "plain")
@@ -779,6 +789,11 @@ app.config.update(
 			JWT_SECRET_KEY = "I'M IML"
 		)
 jwt = JWTManager(app)
+
+@app.route('/change')
+def change():
+    template = env.get_template('change_pw.html')
+    return template.render()
 
 @app.route('/jwt', methods=['POST'])
 def jmt():
