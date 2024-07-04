@@ -771,7 +771,7 @@ def mail():
    # 메일 본문 내용
    content = "안녕하세요. \n\n\
    링크를 전달드립니다.\n\n\
-   http://192.168.1.131:5000/change \n\n\
+   http://http://43.203.207.20:5000/change \n\n\
    감사합니다\n\n\
    "
    content_part = MIMEText(content, "plain")
