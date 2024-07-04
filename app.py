@@ -52,52 +52,64 @@ def login():
 
 @app.route('/make')
 def make():
-   return env.get_template('create.html').render()
+   week =["월","화","수","목","금","토","일"]
+   return env.get_template('create.html').render(week=week)
 
 
 @app.route('/make', methods = ['POST'])
 def make_groups():
     #  1. 클라이언트로부터 데이터를 받기
-	mode = request.form['mode']
+    mode = request.form['mode']
     
-	print(mode)
-      
-	group={}
-	group2={}
-
-	if mode =='ajax':
-		subject1 = request.form['keyword1']
-		subject2 = request.form['keyword2']
-		subject3 = request.form['keyword3']
+    print(mode)
     
-		subject = [subject1, subject2, subject3]
+    group={}
+    group2={}
+    
+    if mode =='ajax':
+        subject1 = request.form['keyword1']
+        subject2 = request.form['keyword2']
+        subject3 = request.form['keyword3']
         
-		on_off = request.form['on_off_give']
-		location = request.form['location_give']
-		level = request.form['level']
-		mood = request.form['mood']
+        subject = [subject1, subject2, subject3]
+        
+        week1 = request.form['week1']
+        week2 = request.form['week2']
+        week3 = request.form['week3']
+        # week4 = request.form['week4']
+        # week5 = request.form['week5']
+        # week6 = request.form['week6']
+        # week7 = request.form['week7']
+        
+        week = [week1, week2, week3]
+        
+        on_off = request.form['on_off_give']
+        location = request.form['location_give']
+        level = request.form['level']
+        mood = request.form['mood']
 
-		group = {
+        group = {
             'subject' : subject,
             'time' : time,
             'on_off':on_off,
             'loc': location,
             'level': level,
-            'mood': mood
+            'mood': mood,
+            'week': week
 		}
-		print("group : ", group)
-		db.groups.insert_one(group)
-		print(time)
-            
-	else:
-		name = request.form['topic']
-		content = request.form['content']
-		start_period = request.form['start_period']
-		link = request.form['link']
+        print("group : ", group)
+        db.groups.insert_one(group)
+        print(time)
+
+    else:
+        name = request.form['topic']
+        content = request.form['content']
+        start_period = request.form['start_period']
+        link = request.form['link']
    
-		end_period = request.form['end_period']
+        end_period = request.form['end_period']
             
-		group2 = {
+        group2 = {
         	'name' : name,
         	'start_period' : start_period,
         	'content' : content,
@@ -107,13 +119,13 @@ def make_groups():
 		}
 
 
-		print("group : ", group)
-		latest_document = db.groups.find_one(sort=[("_id", -1)])
-		filter_query = {"_id": latest_document["_id"]}
+        print("group : ", group)
+        latest_document = db.groups.find_one(sort=[("_id", -1)])
+        filter_query = {"_id": latest_document["_id"]}
 
-		db.groups.update_one(filter_query,{"$set" : group2})
+        db.groups.update_one(filter_query,{"$set" : group2})
 	
-	return env.get_template('MyStudy.html').render()
+    return main()
 
 @app.route('/MyStudy')
 def MyStudy():
@@ -128,7 +140,8 @@ def edit():
 @app.route('/change_profile')
 def change_profile():
     template = env.get_template('change_profile.html')
-    return template.render()
+    # id=db.userInfo.find_one()
+    return template.render(id='www.gmail.com')
 
 @app.route('/check_pw')
 def chaeck_pw():
@@ -162,9 +175,9 @@ def  IdCheck():
         return '유효하지 않은 이메일 형식입니다.'
      result = db.userInfo.find_one({"id": id}, {'_id': 0})
      if result:
-         return "이 아이디는 이미 사용중입니다."
+        return "이 아이디는 이미 사용중입니다."
      else:
-         return "이 아이디는 사용이 가능합니다."
+        return "이 아이디는 사용이 가능합니다."
 
 
 @app.route('/nickCheck',methods=['POST'])
@@ -174,9 +187,9 @@ def  NickCheck():
         return '닉네임을 입력해주세요.'
      result = db.userInfo.find_one({"nickname": nickName}, {'_id': 0})
      if result:
-         return "이 닉네임은 이미 사용중입니다."
+        return "이 닉네임은 이미 사용중입니다."
      else:
-         return "이 닉네임은 사용이 가능합니다."
+        return "이 닉네임은 사용이 가능합니다."
 
 
 
@@ -191,13 +204,23 @@ def submit():
     'pw': pw,
     'nickname':nickname,
     }
+    email_pattern = r'^[^\s@]+@[^\s@]+\.[^\s@]+$'
+    
+    result = db.userInfo.find_one({"id": id}, {'_id': 0})
+
+    if id !="" and re.match(email_pattern, id) and not result:
+        print('not null and match')
+        db.userInfo.insert_one(data)
+    else : 
+        template = env.get_template('sign_up.html')
+
     #매칭페이지 데이터
     locations =["서울","수원","인천","대구","부산","울산","광주","전주","대전","세종","천안","청주","원주","춘천","제주","기타"]
     platforms = ["전체","슬랙","디스코드","zoom","기타"]
     week =["월","화","수","목","금","토","일"]
     levels = ["상","중상","중","중하","하"]
     moods =["몰입하는 분위기","사람들과 친해지는 분위기"]
-    db.userInfo.insert_one(data)
+    
     return template.render(moods=moods,levels=levels,week=week,locations=locations,platforms=platforms)
     
     
@@ -565,7 +588,7 @@ StudyDB = []
 for group in groups:
     StudyDB.append(group)
     
-# StudyDB = [StudyData0, StudyData1, StudyData2, StudyData3, StudyData4, StudyData5, StudyData6, StudyData7, StudyData8, StudyData9, StudyData10, StudyData11, StudyData12, StudyData13, StudyData14, StudyData15, StudyData16, StudyData17, StudyData18, StudyData19, StudyData20]
+StudyDB = [StudyData0, StudyData1, StudyData2, StudyData3, StudyData4, StudyData5, StudyData6, StudyData7, StudyData8, StudyData9, StudyData10, StudyData11, StudyData12, StudyData13, StudyData14, StudyData15, StudyData16, StudyData17, StudyData18, StudyData19, StudyData20]
 print(StudyDB)
 def subjectMatcher(List, Subject): 
     ans = []
@@ -647,13 +670,13 @@ def Matcher(List, Userdata):
     print("메인함수")
     ans = []
     on_off = []
-    location = []
+    loc = []
     week = []
 
     for i in List:
 
         if i["location"] == Userdata["location"]:
-            location.append(i)
+            loc.append(i)
             
         elif i["on_off"] == Userdata["on_off"]:
             if len(on_off) != 7:
@@ -662,7 +685,7 @@ def Matcher(List, Userdata):
         elif i["week"] == Userdata["week"]:
             week.append(i)
 
-        locans = locdef(location, Userdata)
+        locans = locdef(loc, Userdata)
 
         weekans = weekdef(week, Userdata)
         print(weekans)
@@ -671,7 +694,7 @@ def Matcher(List, Userdata):
     locans = sort_by_time(locans, 'time')
     weekans = sort_by_time(weekans, 'time')
     
-    ans = {"on_off" : on_off, "location": location, "week":week, "User":Userdata}
+    ans = {"on_off" : on_off, "location": loc, "week":week, "User":Userdata}
 
     return ans
 
@@ -785,15 +808,16 @@ def change():
 
 @app.route('/jwt', methods=['POST'])
 def jmt():
-
-   dummy={"id" : "1234@1234.com", "pw": "1234"}
-
    user_id = request.form['email']
    user_pw = request.form['password']
 
-   if user_id == dummy["id"] and user_pw == dummy['pw']:
-      access_token = create_access_token(identity = user_id,
+   result = db.userInfo.find_one({"id":user_id},{'_id':0})
+
+   print(result)
+   if user_pw==result['pw']:
+       access_token = create_access_token(identity = user_id,
 											expires_delta = False)
+
    else:
       return jsonify(
 			result = "Invalid Params!"

@@ -73,28 +73,7 @@
   </head>
 
   <body class="bg-gray-100">
-    <header class="bg-white shadow">
-      <div
-        class="container mx-auto px-4 py-4 flex justify-between items-center"
-      >
-        <!-- Web Title -->
-        <h1 class="text-2xl font-bold text-gray-800">러닝메이트</h1>
-
-        <!-- Right section with Logout button and Profile picture -->
-        <div class="flex items-center space-x-4">
-          <button
-            class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-          >
-            Logout
-          </button>
-          <img
-            src="https://via.placeholder.com/40"
-            alt="Profile Picture"
-            class="w-10 h-10 rounded-full"
-          />
-        </div>
-      </div>
-    </header>
+    {% include 'header.html'%}
     <h1 class="flex container mx-auto p-8 text-5xl">스터디 만들기</h1>
     <!-- Main content -->
     <main class="flex container mx-auto mt-8 px-4 space-x-4">
@@ -137,7 +116,19 @@
                 type="date"
               />~<input name="end_period" class="ml-2 rounded-md" type="date" />
             </div>
+            <p>시간</p>
+            <div id="week" class="flex flex-wrap gap-2">
+              {% for day in week %}
+              <input
+                type="text"
+                
+                value="{{day}}"
+                readonly
+                class="w-full bg-gray-200 p-2 text-gray-700 focus:outline-none rounded-md h-10 drag-n cursor-pointer toggle"
+              />
 
+              {% endfor %}
+            </div>
             <p>연락 링크</p>
             <input
               type="text"
@@ -217,33 +208,23 @@
                 <div
                   class="bg-gray-200 text-gray-700 px-3 py-2 rounded-lg focus:outline-none drag-n toggle"
                   data-keyword="keyword1"
-                >
-                  상
-                </div>
+                >상</div>
                 <div
                   class="bg-gray-200 text-gray-700 px-3 py-2 rounded-lg focus:outline-none drag-n toggle"
                   data-keyword="keyword2"
-                >
-                  중상
-                </div>
+                >중상</div>
                 <div
                   class="bg-gray-200 text-gray-700 px-3 py-2 rounded-lg focus:outline-none drag-n toggle"
                   data-keyword="keyword3"
-                >
-                  중
-                </div>
+                >중</div>
                 <div
                   class="bg-gray-200 text-gray-700 px-3 py-2 rounded-lg focus:outline-none drag-n toggle"
                   data-keyword="keyword4"
-                >
-                  중하
-                </div>
+                >중하</div>
                 <div
                   class="bg-gray-200 text-gray-700 px-3 py-2 rounded-lg focus:outline-none drag-n toggle"
                   data-keyword="keyword5"
-                >
-                  하
-                </div>
+                >하</div>
               </div>
             </div>
 
@@ -253,15 +234,11 @@
                 <div
                   class="bg-gray-200 text-gray-700 px-3 py-2 rounded-lg focus:outline-none drag-n toggle"
                   data-keyword="keyword1"
-                >
-                  있음
-                </div>
+                >있음</div>
                 <div
                   class="bg-gray-200 text-gray-700 px-3 py-2 rounded-lg focus:outline-none drag-n toggle"
                   data-keyword="keyword2"
-                >
-                  없음
-                </div>
+                >없음</div>
               </div>
             </div>
 
