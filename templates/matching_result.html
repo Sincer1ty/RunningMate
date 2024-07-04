@@ -104,44 +104,26 @@
     <!-- Main content -->
     <main class="flex container mx-auto mt-8 px-4 space-x-4 ">
         <!-- Vertical cards -->
-    <div class="card-group flex bg-blue-500 p-8 rounded-lg mb-32 ">
-        <div class="card-container bg-blue-500 p-3 space-y-4 mr-2 w-1/3 rounded-lg">
-            <!-- Toggle Button -->
-            <div class="scroll space-y-4">
-                
+
+    <div class="card-group flex bg-white p-8 rounded-lg mb-32 ">
+        
+            {% for i in location:%}
                 <!-- Card 1 -->
                 <div class="card bg-white shadow-md rounded-lg p-6 h-64" onclick="openModal()">
-                    <h2 class="text-xl font-bold mb-2">Card Title 1</h2>
-                    <p class="text-gray-700">This is a description of the first card. You can put any content here.</p>
-                </div>
-    
-            </div>
-        </div>
-        <div class="card-container bg-blue-500 p-3 space-y-4 mr-2 w-1/3 rounded-lg">
-            <!-- Toggle Button -->
-            <div class="scroll space-y-4">
-                
-                <!-- Card 1 -->
-                <div class="card bg-white shadow-md rounded-lg p-6 h-64">
-                    <h2 class="text-xl font-bold mb-2">Card Title 1</h2>
-                    <p class="text-gray-700">This is a description of the first card. You can put any content here.</p>
+                    <h2 class="text-xl font-bold mb-2">{{i.name}}</h2>
+                    <p class="text-gray-700">{{i.content}}</p>
+                    <p class="text-gray-700">{{i.location}}</p>
+                    <p class="text-gray-700">{{i.period}}</p>
+                    <p class="text-gray-700">{{i.time}}</p>
+                    <p class="text-gray-700">{{i.link}}</p>
+                  
+
                 </div>
 
-              
-            </div>
-        </div>
-        <div class="card-container bg-blue-500 p-3 space-y-4 mr-2 w-1/3 rounded-lg">
-            <!-- Toggle Button -->
-            <div class="scroll space-y-4">
                 
-                <!-- Card 1 -->
-                <div class="bg-white shadow-md rounded-lg p-6 h-64">
-                    <h2 class="text-xl font-bold mb-2">Card Title 1</h2>
-                    <p class="text-gray-700">This is a description of the first card. You can put any content here.</p>
-                </div>
-    
-               
-            </div>
+
+
+                {% endfor %}
         </div>
  
 
