@@ -32,7 +32,18 @@ def matching():
 @app.route('/matching_result')
 def matching_result():
     template = env.get_template('matching_result.html')
-    return template.render()
+
+    UserSubject = UserData0["subject"] # 유저데이터로 탐색
+
+    temp = subjectMatcher(StudyDB, UserSubject)
+   
+    if not temp:
+       Matcher(StudyDB, UserData0)
+    else:
+       ans = Matcher(temp, UserData0)
+
+    return template.render(ans)
+
 
 
 @app.route('/')

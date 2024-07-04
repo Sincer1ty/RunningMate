@@ -105,55 +105,23 @@
     <main class="flex container mx-auto mt-8 px-4 space-x-4 ">
         <!-- Vertical cards -->
     <div class="card-group flex bg-white p-8 rounded-lg mb-32 ">
-        <div class="card-container bg-blue-500 p-3 space-y-4 mr-2 w-1/3 rounded-lg">
-            <!-- Toggle Button -->
-            <div class="toggle-button-group h-12 flex">
-                <div class="toggle-button active flex items-center justify-center " onclick="toggleButton(this)">대면</div>
-                <div class="toggle-button inactive flex items-center justify-center" onclick="toggleButton(this)">비대면</div>
-            </div>
-            <div class="scroll space-y-4">
-                
+        
+            {% for i in location:%}
                 <!-- Card 1 -->
                 <div class="card bg-white shadow-md rounded-lg p-6 h-64" onclick="openModal()">
-                    <h2 class="text-xl font-bold mb-2">Card Title 1</h2>
-                    <p class="text-gray-700">This is a description of the first card. You can put any content here.</p>
+                    <h2 class="text-xl font-bold mb-2">{{i.name}}</h2>
+                    <p class="text-gray-700">{{i.content}}</p>
+                    <p class="text-gray-700">{{i.location}}</p>
+                    <p class="text-gray-700">{{i.period}}</p>
+                    <p class="text-gray-700">{{i.time}}</p>
+                    <p class="text-gray-700">{{i.link}}</p>
+                  
+
                 </div>
-    
-            </div>
-        </div>
-        <div class="card-container bg-blue-500 p-3 space-y-4 mr-2 w-1/3 rounded-lg">
-            <!-- Toggle Button -->
-            <div class="local flex bg-white h-12 items-center justify-between ">
-                <div class="bg-gray-100 w-1/3 h-full flex items-center justify-center text-center rounded-l-full ">지역</div>
-                <div class="bg-white w-2/3 h-full flex items-center justify-center text-center rounded-r-full">서울</div>
-            </div>
-            <div class="scroll space-y-4">
                 
-                <!-- Card 1 -->
-                <div class="card bg-white shadow-md rounded-lg p-6 h-64">
-                    <h2 class="text-xl font-bold mb-2">Card Title 1</h2>
-                    <p class="text-gray-700">This is a description of the first card. You can put any content here.</p>
-                </div>
-    
-              
-            </div>
-        </div>
-        <div class="card-container bg-blue-500 p-3 space-y-4 mr-2 w-1/3 rounded-lg">
-            <!-- Toggle Button -->
-            <div class="local flex bg-white h-12 items-center justify-between ">
-                <div class="bg-gray-100 w-1/3 h-full flex items-center justify-center text-center rounded-l-full ">기간</div>
-                <div class="bg-white w-2/3 h-full flex items-center justify-center text-center rounded-r-full">24.12.02~25.01.15</div>
-            </div>
-            <div class="scroll space-y-4">
-                
-                <!-- Card 1 -->
-                <div class="bg-white shadow-md rounded-lg p-6 h-64">
-                    <h2 class="text-xl font-bold mb-2">Card Title 1</h2>
-                    <p class="text-gray-700">This is a description of the first card. You can put any content here.</p>
-                </div>
-    
-               
-            </div>
+
+
+                {% endfor %}
         </div>
  
 
